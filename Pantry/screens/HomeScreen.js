@@ -11,6 +11,7 @@ import {
 import { WebBrowser } from "expo";
 
 import { MonoText } from "../components/StyledText";
+import { PieChart } from "../components/PieChart";
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -33,6 +34,19 @@ export default class HomeScreen extends React.Component {
           contentContainerStyle={styles.scrollContentContainer}
         >
           <View style={styles.card}>
+            <PieChart />
+            <View style={styles.cardText}>
+              <Text style={styles.cardTextPrimary}>40 Orders</Text>
+              <Text style={styles.cardTextSecondary}>38 shipped</Text>
+            </View>
+          </View>
+          <View style={styles.card}>
+            <View style={styles.cardText}>
+              <Text style={styles.cardTextPrimary}>40 Orders</Text>
+              <Text style={styles.cardTextSecondary}>38 shipped</Text>
+            </View>
+          </View>
+          <View style={styles.card}>
             <Image
               source={require("../assets/images/piechart.png")}
               style={styles.iconImage}
@@ -47,16 +61,17 @@ export default class HomeScreen extends React.Component {
               <Text style={styles.cardTextPrimary}>40 Orders</Text>
               <Text style={styles.cardTextSecondary}>38 shipped</Text>
             </View>
+            <Image
+              source={require("../assets/images/piechart.png")}
+              style={styles.iconImage}
+            />
           </View>
           <View style={styles.card}>
             <View style={styles.cardText}>
               <Text style={styles.cardTextPrimary}>40 Orders</Text>
               <Text style={styles.cardTextSecondary}>38 shipped</Text>
             </View>
-            <Image
-              source={require("../assets/images/piechart.png")}
-              style={styles.iconImage}
-            />
+            <PieChart />
           </View>
         </ScrollView>
 
@@ -133,8 +148,8 @@ const styles = StyleSheet.create({
     marginLeft: 17,
     marginRight: 17,
     padding: 8,
-    backgroundColor: "#ffffff",
     flexDirection: "row",
+    backgroundColor: "#ffffff",
     borderWidth: 0.5,
     borderColor: "#d6d7da",
     borderRadius: 2
