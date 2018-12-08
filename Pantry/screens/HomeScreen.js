@@ -134,7 +134,10 @@ const styles = StyleSheet.create({
     marginRight: 17,
     padding: 8,
     backgroundColor: "#ffffff",
-    flexDirection: "row"
+    flexDirection: "row",
+    borderWidth: 0.5,
+    borderColor: "#d6d7da",
+    borderRadius: 2
   },
   iconImage: {
     width: 40,
