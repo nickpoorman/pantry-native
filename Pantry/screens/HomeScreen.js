@@ -9,12 +9,8 @@ import {
   View
 } from "react-native";
 import { WebBrowser } from "expo";
-// import { WebView } from "react-native-webview";
-import { ResponsivePie } from "@nivo/pie";
 
 import { MonoText } from "../components/StyledText";
-
-const win = Dimensions.get("window");
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -36,67 +32,9 @@ export default class HomeScreen extends React.Component {
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          <WebView
-            onLayout={this.reRenderWebView}
-            source={{ html: concatHTML, baseUrl: "web/" }}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            scalesPageToFit={true}
-            scrollEnabled={false}
-            automaticallyAdjustContentInsets={true}
-          />
-
-          <ResponsivePie
-            height={500}
-            data={[
-              {
-                id: "ruby",
-                label: "ruby",
-                value: 249
-              },
-              {
-                id: "java",
-                label: "java",
-                value: 433
-              },
-              {
-                id: "make",
-                label: "make",
-                value: 387
-              },
-              {
-                id: "javascript",
-                label: "javascript",
-                value: 561
-              },
-              {
-                id: "lisp",
-                label: "lisp",
-                value: 371
-              },
-              {
-                id: "haskell",
-                label: "haskell",
-                value: 54
-              },
-              {
-                id: "erlang",
-                label: "erlang",
-                value: 539
-              },
-              {
-                id: "hack",
-                label: "hack",
-                value: 89
-              },
-              {
-                id: "sass",
-                label: "sass",
-                value: 100
-              }
-            ]}
-            animate
-          />
+          <View>
+            <Text>This is a tab bar. You can edit it in:</Text>
+          </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
