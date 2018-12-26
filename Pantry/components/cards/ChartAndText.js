@@ -6,6 +6,7 @@ import { CardText } from "./CardText";
 import { PieChart } from "../PieChart";
 import { LineChart } from "../LineChart";
 import { AreaChart } from "../AreaChart";
+import { ProgressCircleChart } from "../ProgressCircleChart";
 
 export class ChartAndText extends React.Component {
   renderChartByType() {
@@ -16,6 +17,8 @@ export class ChartAndText extends React.Component {
       return <LineChart />
     } else if (chartType == 'area') {
       return <AreaChart />
+    } else if (chartType == 'progress') {
+      return <ProgressCircleChart />
     }
   }
 
@@ -38,7 +41,7 @@ ChartAndText.defaultProps = {
 
 ChartAndText.propTypes = {
   chartPosition: PropTypes.oneOf(['left', 'right']).isRequired,
-  chartType: PropTypes.oneOf(['pie', 'line', 'area']).isRequired,
+  chartType: PropTypes.oneOf(['pie', 'line', 'area', 'progress']).isRequired,
 }
 
 const styles = StyleSheet.create({

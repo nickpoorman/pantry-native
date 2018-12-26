@@ -33,6 +33,9 @@ export class Card extends React.Component {
 
             <View style={styles.card}><ChartAndText chartPosition="left" chartType="line"/></View>
             <View style={styles.card}><ChartAndText chartPosition="right" chartType="line"/></View>
+
+            <View style={styles.card}><ChartAndText chartPosition="left" chartType="progress"/></View>
+            <View style={styles.card}><ChartAndText chartPosition="right" chartType="progress"/></View>
           
         </ScrollView>
       </View>

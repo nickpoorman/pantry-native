@@ -6,7 +6,7 @@ export class ProgressCircleChart extends React.PureComponent {
   render() {
     return (
       <ProgressCircle
-        style={{ height: 200 }}
+        style={{ width: 40, height: 40, margin: 8 }}
         progress={0.7}
         progressColor={"rgb(134, 65, 244)"}
       />
