@@ -27,6 +27,8 @@ export class Card extends React.Component {
 
             <View style={styles.card}><IconAndText /></View>
             <View style={styles.card}><IconAndText iconPosition="right"/></View>
+
+            <View style={styles.card}><ChartAndText chartPosition="right" chartType="area"/></View>
           
         </ScrollView>
       </View>
