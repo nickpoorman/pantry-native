@@ -7,6 +7,7 @@ import { PieChart } from "../PieChart";
 import { LineChart } from "../LineChart";
 import { AreaChart } from "../AreaChart";
 import { ProgressCircleChart } from "../ProgressCircleChart";
+import { BarChart } from "../BarChart";
 
 export class ChartAndText extends React.Component {
   renderChartByType() {
@@ -19,6 +20,8 @@ export class ChartAndText extends React.Component {
       return <AreaChart />
     } else if (chartType == 'progress') {
       return <ProgressCircleChart />
+    } else if (chartType == 'bar') {
+      return <BarChart />
     }
   }
 
@@ -41,7 +44,7 @@ ChartAndText.defaultProps = {
 
 ChartAndText.propTypes = {
   chartPosition: PropTypes.oneOf(['left', 'right']).isRequired,
-  chartType: PropTypes.oneOf(['pie', 'line', 'area', 'progress']).isRequired,
+  chartType: PropTypes.oneOf(['pie', 'line', 'area', 'progress', 'bar']).isRequired,
 }
 
 const styles = StyleSheet.create({
