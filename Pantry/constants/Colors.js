@@ -11,4 +11,9 @@ export default {
   warningText: '#666804',
   noticeBackground: tintColor,
   noticeText: '#fff',
+
+  // Charts
+  chartColor: 'rgb(134, 65, 244)',
+  chartColorLight: 'rgb(241, 235, 249)',
+  chartColorFaded: 'rgb(134, 65, 244, 0.8)',
 }

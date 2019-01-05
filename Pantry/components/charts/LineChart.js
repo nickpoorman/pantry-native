@@ -1,6 +1,7 @@
 import React from 'react'
 import { LineChart as SVGLineChart, Grid } from 'react-native-svg-charts'
 import graphStyles from '../../assets/styles/graph-styles'
+import Colors from '../../constants/Colors'
 
 export class LineChart extends React.PureComponent {
   render() {
@@ -24,10 +25,9 @@ export class LineChart extends React.PureComponent {
 
     return (
       <SVGLineChart
-        // TODO: Need to figure out this width issue. It should automatically use all the space to the left or right.
         style={{ ...graphStyles.chartFlex, ...graphStyles.lineChart }}
         data={data}
-        svg={{ stroke: 'rgb(134, 65, 244)' }}
+        svg={{ stroke: Colors.chartColor }}
         contentInset={{ top: 0, bottom: 0 }}
       >
         {/* <Grid /> */}
