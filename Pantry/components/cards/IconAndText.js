@@ -1,47 +1,47 @@
-import React from "react";
-import { StyleSheet, Image, View } from "react-native";
-import PropTypes from "prop-types";
+import React from 'react'
+import { StyleSheet, Image, View } from 'react-native'
+import PropTypes from 'prop-types'
 
-import { CardText } from "./CardText";
+import { CardText } from './CardText'
 
 export class IconAndText extends React.Component {
   render() {
     return (
       <View style={styles.cardFlex}>
-        {this.props.iconPosition == "left" && (
+        {this.props.iconPosition == 'left' && (
           <Image
-            source={require("../../assets/images/piechart.png")}
+            source={require('../../assets/images/piechart.png')}
             style={styles.iconImage}
           />
         )}
         <CardText />
-        {this.props.iconPosition == "right" && (
+        {this.props.iconPosition == 'right' && (
           <Image
-            source={require("../../assets/images/piechart.png")}
+            source={require('../../assets/images/piechart.png')}
             style={styles.iconImage}
           />
         )}
       </View>
-    );
+    )
   }
 }
 
 IconAndText.defaultProps = {
-  iconPosition: "left"
-};
+  iconPosition: 'left',
+}
 
 IconAndText.propTypes = {
-  iconPosition: PropTypes.string.isRequired
-};
+  iconPosition: PropTypes.string.isRequired,
+}
 
 const styles = StyleSheet.create({
   cardFlex: {
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   iconImage: {
     width: 40,
     height: 40,
-    resizeMode: "contain",
-    margin: 8
-  }
-});
+    resizeMode: 'contain',
+    margin: 8,
+  },
+})
