@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
   },
-  iconImage: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-    margin: 8,
-  },
+  // iconImage: {
+  //   width: 40,
+  //   height: 40,
+  //   resizeMode: 'contain',
+  //   margin: 8,
+  // },
   textContainer: {
     flexGrow: 2,
   },

@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { WebBrowser } from 'expo'
 
-import { Card } from 'app/components/Card'
+import { Cards } from 'app/components/Cards'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -22,16 +22,7 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <ScrollView
-          style={styles.scrollContainer}
-          contentContainerStyle={styles.scrollContentContainer}
-        >
-          <Card />
-        </ScrollView>
-      </View>
-    )
+    return <Cards />
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -71,17 +62,6 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  scrollContainer: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-  },
-  scrollContentContainer: {
-    paddingTop: 30,
-  },
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',

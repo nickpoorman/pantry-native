@@ -7,8 +7,14 @@ export default StyleSheet.create({
   areaChart: {},
   barChart: {},
   lineChart: {},
-  pieChart: {},
-  progressCircleChart: {},
+  pieChart: {
+    width: 50,
+    alignSelf: 'flex-end',
+  },
+  progressCircleChart: {
+    width: 50,
+    alignSelf: 'flex-end',
+  },
   stackedAreaChart: {},
   stackedBarChart: {},
 })
