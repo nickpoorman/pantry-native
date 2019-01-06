@@ -13,7 +13,12 @@ import { Card } from 'app/components/Card'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 'Metriks',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontFamily: 'montserrat-bold',
+      letterSpacing: 0.7,
+    },
   }
 
   render() {

@@ -23,24 +23,20 @@ const styles = StyleSheet.create({
   },
   cardTextPrimaryContainer: {
     flexDirection: 'row',
+    alignItems: 'baseline',
   },
   cardTextPrimaryNumber: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#222325',
-    lineHeight: 24,
-    // textAlign: "center"
+    fontWeight: '500',
   },
   cardTextPrimary: {
     fontSize: 14,
     color: '#222325',
-    lineHeight: 24,
     fontWeight: '500',
-    // textAlign: "center"
   },
   cardTextSecondary: {
     fontSize: 12,
     color: '#a3a3a3',
-    // lineHeight: 18
-    // textAlign: "center"
   },
 })
