@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { WebBrowser } from 'expo'
 
-import { Card } from '../components/Card'
+import { Card } from 'app/components/Card'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {

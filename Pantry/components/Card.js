@@ -1,9 +1,9 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 
-import { CardText } from './cards/CardText'
-import { ChartAndText } from './cards/ChartAndText'
-import { IconAndText } from './cards/IconAndText'
+import { CardText } from 'app/components/cards/CardText'
+import { ChartAndText } from 'app/components/cards/ChartAndText'
+import { IconAndText } from 'app/components/cards/IconAndText'
 
 export class Card extends React.Component {
   static navigationOptions = {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StackedAreaChart as SVGStackedAreaChart } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
-import graphStyles from '../../assets/styles/graph-styles'
+import graphStyles from 'app/assets/styles/graph-styles'
 
 export class StackedAreaChart extends React.PureComponent {
   render() {

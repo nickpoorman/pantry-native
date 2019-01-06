@@ -1,6 +1,6 @@
 import React from 'react'
 import { BarChart as SVGBarChart, Grid } from 'react-native-svg-charts'
-import graphStyles from '../../assets/styles/graph-styles'
+import graphStyles from 'app/assets/styles/graph-styles'
 
 export class BarChart extends React.PureComponent {
   render() {

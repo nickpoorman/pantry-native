@@ -1,8 +1,8 @@
 import React from 'react'
 import { PieChart as SVGPieChart } from 'react-native-svg-charts'
-import graphStyles from '../../assets/styles/graph-styles'
-import { generateHexColors } from '../../utils/colors'
-import Colors from '../../constants/Colors'
+import graphStyles from 'app/assets/styles/graph-styles'
+import { generateHexColors } from 'app/utils/colors'
+import Colors from 'app/constants/Colors'
 
 export class PieChart extends React.PureComponent {
   render() {

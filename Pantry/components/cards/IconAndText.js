@@ -1,23 +1,16 @@
 import React from 'react'
-import { StyleSheet, Image, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
-import { Ionicons } from '@expo/vector-icons'
-import { CardText } from './CardText'
-import Colors from '../../constants/Colors'
+import { CardText } from 'app/components/cards/CardText'
+import { LinkIcon } from 'app/components/LinkIcon'
 
 export class IconAndText extends React.Component {
   render() {
-    const renderIcon = (
-      <View style={styles.iconContainer}>
-        <Ionicons name='ios-link' size={28} color={Colors.chartColor} />
-      </View>
-    )
-
     return (
       <View style={styles.cardFlex}>
-        {this.props.iconPosition == 'left' && renderIcon}
+        {this.props.iconPosition == 'left' && <LinkIcon />}
         <CardText />
-        {this.props.iconPosition == 'right' && renderIcon}
+        {this.props.iconPosition == 'right' && <LinkIcon />}
       </View>
     )
   }
@@ -40,9 +33,5 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
     margin: 8,
-  },
-  iconContainer: {
-    margin: 4,
-    justifyContent: 'center',
   },
 })

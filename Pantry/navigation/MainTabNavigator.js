@@ -5,10 +5,10 @@ import {
   createBottomTabNavigator,
 } from 'react-navigation'
 
-import TabBarIcon from '../components/TabBarIcon'
-import HomeScreen from '../screens/HomeScreen'
-import LinksScreen from '../screens/LinksScreen'
-import SettingsScreen from '../screens/SettingsScreen'
+import TabBarIcon from 'app/components/TabBarIcon'
+import HomeScreen from 'app/screens/HomeScreen'
+import LinksScreen from 'app/screens/LinksScreen'
+import SettingsScreen from 'app/screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,

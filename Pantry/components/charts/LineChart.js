@@ -1,7 +1,7 @@
 import React from 'react'
 import { LineChart as SVGLineChart, Grid } from 'react-native-svg-charts'
-import graphStyles from '../../assets/styles/graph-styles'
-import Colors from '../../constants/Colors'
+import graphStyles from 'app/assets/styles/graph-styles'
+import Colors from 'app/constants/Colors'
 
 export class LineChart extends React.PureComponent {
   render() {

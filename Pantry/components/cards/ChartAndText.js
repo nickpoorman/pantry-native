@@ -2,12 +2,12 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { CardText } from './CardText'
-import { PieChart } from '../charts/PieChart'
-import { LineChart } from '../charts/LineChart'
-import { AreaChart } from '../charts/AreaChart'
-import { ProgressCircleChart } from '../charts/ProgressCircleChart'
-import { BarChart } from '../charts/BarChart'
+import { CardText } from 'app/components/cards/CardText'
+import { PieChart } from 'app/components/charts/PieChart'
+import { LineChart } from 'app/components/charts/LineChart'
+import { AreaChart } from 'app/components/charts/AreaChart'
+import { ProgressCircleChart } from 'app/components/charts/ProgressCircleChart'
+import { BarChart } from 'app/components/charts/BarChart'
 
 export class ChartAndText extends React.Component {
   renderChartByType() {

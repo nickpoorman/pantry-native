@@ -1,8 +1,8 @@
 import React from 'react'
 import { AreaChart as SVGAreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
-import graphStyles from '../../assets/styles/graph-styles'
-import Colors from '../../constants/Colors'
+import graphStyles from 'app/assets/styles/graph-styles'
+import Colors from 'app/constants/Colors'
 
 export class AreaChart extends React.PureComponent {
   render() {
