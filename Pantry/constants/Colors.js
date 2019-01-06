@@ -13,7 +13,7 @@ export default {
   noticeText: '#fff',
 
   // Charts
-  chartColor: 'rgb(134, 65, 244)',
+  chartColor: 'rgb(134, 65, 244)', // #8640f4
   chartColorLight: 'rgb(241, 235, 249)',
   chartColorFaded: 'rgb(134, 65, 244, 0.8)',
 }
