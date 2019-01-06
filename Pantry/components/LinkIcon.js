@@ -19,8 +19,5 @@ export class LinkIcon extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  iconContainer: {
-    margin: 4,
-    justifyContent: 'center',
-  },
+  iconContainer: {},
 })
