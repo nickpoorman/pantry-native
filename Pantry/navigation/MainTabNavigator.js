@@ -9,6 +9,9 @@ import TabBarIcon from 'app/components/TabBarIcon'
 import HomeScreen from 'app/screens/HomeScreen'
 import TargetsScreen from 'app/screens/TargetsScreen'
 import SettingsScreen from 'app/screens/SettingsScreen'
+import Colors from 'app/constants/Colors'
+
+const defaultOptions = {}
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -56,8 +59,16 @@ SettingsStack.navigationOptions = {
   ),
 }
 
-export default createBottomTabNavigator({
-  HomeStack,
-  TargetsStack,
-  SettingsStack,
-})
+export default createBottomTabNavigator(
+  {
+    HomeStack,
+    TargetsStack,
+    SettingsStack,
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: Colors.tabActiveText,
+      inactiveTintColor: Colors.tabInactiveText,
+    },
+  }
+)

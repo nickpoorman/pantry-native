@@ -1,7 +1,10 @@
-const tintColor = '#2f95dc'
+const metriksPurple = '#8640f4'
+const tintColor = metriksPurple // '#2f95dc'
 
 export default {
   tintColor,
+  tabActiveText: tintColor,
+  tabInactiveText: '#989898',
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',
