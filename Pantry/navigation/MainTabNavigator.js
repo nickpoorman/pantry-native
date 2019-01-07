@@ -7,7 +7,7 @@ import {
 
 import TabBarIcon from 'app/components/TabBarIcon'
 import HomeScreen from 'app/screens/HomeScreen'
-import LinksScreen from 'app/screens/LinksScreen'
+import TargetsScreen from 'app/screens/TargetsScreen'
 import SettingsScreen from 'app/screens/SettingsScreen'
 
 const HomeStack = createStackNavigator({
@@ -15,29 +15,29 @@ const HomeStack = createStackNavigator({
 })
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Metriks',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-stats' : 'md-stats'}
+    />
+  ),
+}
+
+const TargetsStack = createStackNavigator({
+  Targets: TargetsScreen,
+})
+
+TargetsStack.navigationOptions = {
+  tabBarLabel: 'Targets',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? 'ios-add-circle-outline'
+          : 'md-add-circle-outline'
       }
-    />
-  ),
-}
-
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-})
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
     />
   ),
 }
@@ -58,6 +58,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  TargetsStack,
   SettingsStack,
 })
