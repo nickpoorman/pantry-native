@@ -8,10 +8,9 @@ import {
 import TabBarIcon from 'app/components/TabBarIcon'
 import HomeScreen from 'app/screens/HomeScreen'
 import TargetsScreen from 'app/screens/TargetsScreen'
+import NewTargetScreen from 'app/screens/NewTargetScreen'
 import SettingsScreen from 'app/screens/SettingsScreen'
 import Colors from 'app/constants/Colors'
-
-const defaultOptions = {}
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -29,6 +28,7 @@ HomeStack.navigationOptions = {
 
 const TargetsStack = createStackNavigator({
   Targets: TargetsScreen,
+  NewTarget: NewTargetScreen,
 })
 
 TargetsStack.navigationOptions = {

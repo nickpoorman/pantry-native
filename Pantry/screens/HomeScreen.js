@@ -18,6 +18,7 @@ export default class HomeScreen extends React.Component {
       fontWeight: 'bold',
       fontFamily: 'montserrat-bold',
       letterSpacing: 0.7,
+      fontSize: 18,
     },
   }
 

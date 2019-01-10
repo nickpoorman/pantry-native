@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Pantry",
-    "slug": "Pantry",
-    "privacy": "public",
-    "sdkVersion": "31.0.0",
+    "name": "Metriks",
+    "slug": "metriks-17496603-641b-4a49-9192-538a2f64d20a-7e315e7a-050d-4478-be4f-9ca2a81890",
+    "privacy": "unlisted",
+    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
@@ -24,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }
