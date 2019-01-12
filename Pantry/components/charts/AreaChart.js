@@ -2,7 +2,7 @@ import React from 'react'
 import { AreaChart as SVGAreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import graphStyles from 'app/assets/styles/graph-styles'
-import Colors from 'app/constants/Colors'
+import { colors } from 'app/styles'
 
 export class AreaChart extends React.PureComponent {
   render() {
@@ -30,7 +30,7 @@ export class AreaChart extends React.PureComponent {
       <SVGAreaChart
         style={{ ...graphStyles.chartFlex, ...graphStyles.areaChart }}
         data={data}
-        svg={{ fill: Colors.chartColor }}
+        svg={{ fill: colors.chartColor }}
         contentInset={{ top: 0, bottom: 0 }}
         // curve={shape.curveNatural}
       >

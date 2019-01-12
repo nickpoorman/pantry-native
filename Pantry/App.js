@@ -1,7 +1,24 @@
 import React from 'react'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
-import AppNavigator from './navigation/AppNavigator'
+// import Sentry from 'sentry-expo'
+
+import deviceOrientation from 'app/lib/deviceOrientation'
+
+import AppLoader from './AppLoader'
+import AppRoot from './AppRoot'
+import config from './env.json'
+
+deviceOrientation()
+
+// TODO: Add this in
+// Sentry.enableInExpoDevelopment = false
+// Sentry.config(config.SENTRY_URL).install()
+
+// Expo.Segment.initialize({
+//   androidWriteKey: 'ANDROID_WRITE_KEY_HERE',
+//   iosWriteKey: 'IOS_WRITE_KEY_HERE',
+// })
 
 export default class App extends React.Component {
   state = {
@@ -17,14 +34,13 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}
         />
       )
-    } else {
-      return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
-          <AppNavigator />
-        </View>
-      )
     }
+
+    return (
+      <AppRoot>
+        <AppLoader />
+      </AppRoot>
+    )
   }
 
   _loadResourcesAsync = async () => {
@@ -44,6 +60,9 @@ export default class App extends React.Component {
         montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
         'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
         'montserrat-extra-bold': require('./assets/fonts/Montserrat-ExtraBold.ttf'),
+
+        // Roboto: require('native-base/Fonts/Roboto.ttf'),
+        // Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
       }),
     ])
   }
@@ -58,10 +77,3 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true })
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-})

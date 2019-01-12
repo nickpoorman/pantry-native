@@ -2,18 +2,18 @@ import React from 'react'
 import { PieChart as SVGPieChart } from 'react-native-svg-charts'
 import graphStyles from 'app/assets/styles/graph-styles'
 import { generateHexColors } from 'app/utils/colors'
-import Colors from 'app/constants/Colors'
+import { colors } from 'app/styles'
 
 export class PieChart extends React.PureComponent {
   render() {
     const data = [40, 60, 20].sort((a, b) => a - b)
 
-    const colors = generateHexColors(
-      Colors.chartColor,
-      Colors.chartColorLight,
+    const generatedColors = generateHexColors(
+      colors.chartColor,
+      colors.chartColorLight,
       data.length
     )
-    const getNextColor = () => colors.pop()
+    const getNextColor = () => generatedColors.pop()
 
     const pieData = data
       .filter(value => value > 0)

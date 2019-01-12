@@ -7,7 +7,7 @@ export default class TargetsScreen extends React.Component {
   }
 
   render() {
-    const data = Array.from({ length: 200 }, (_, n) => ({ key: `row-${n}` }))
+    const data = Array.from({ length: 10 }, (_, n) => ({ key: `row-${n}` }))
     return (
       <ScrollView style={styles.container}>
         <Button
