@@ -1,5 +1,12 @@
 import React from 'react'
-import { ScrollView, StyleSheet, Text, FlatList, Button } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Button,
+  ActivityIndicator,
+} from 'react-native'
 import { connect } from 'react-redux'
 import { loadTargets } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
@@ -8,6 +15,8 @@ import { targetsSelector } from 'app/store/selectors'
   state => ({
     ui: state.ui,
     targets: targetsSelector(state),
+    targetsLoading: state.targets.targetsLoading,
+    targetsRefreshing: state.targets.targetsRefreshing,
   }),
   { loadTargets }
 )
@@ -25,21 +34,22 @@ export default class TargetsScreen extends React.Component {
     this.props.loadTargets()
   }
 
-  // TODO: Still need to implement pull to refresh...
   onRefresh = () => {
     this.props.loadTargets({ refreshing: true })
   }
 
   render() {
-    const { targets } = this.props
+    const { targets, targetsLoading, targetsRefreshing } = this.props
+    console.log(`targetsLoading: ${targetsLoading}`)
+    console.log(`targetsRefreshing: ${targetsRefreshing}`)
     console.log(`targets.log: ${JSON.stringify(targets)}`)
-    // const data = Array.from({ length: 10 }, (_, n) => ({ key: `row-${n}` }))
-    const data = targets.map(target => ({
-      ...target,
-      key: target.id,
-    }))
+
+    if (targetsLoading) {
+      return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
+    }
+
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Button
           title='Add A New Target'
           onPress={() => {
@@ -57,10 +67,14 @@ export default class TargetsScreen extends React.Component {
         </Text>
 
         <FlatList
-          data={data}
+          data={targets}
+          // extraData={this.state} // trigger re-render when this changes
+          keyExtractor={item => item.id}
           renderItem={({ item }) => <Text>{`${item.name} - ${item.url}`}</Text>}
+          onRefresh={this.onRefresh}
+          refreshing={targetsRefreshing}
         />
-      </ScrollView>
+      </View>
     )
   }
 }
