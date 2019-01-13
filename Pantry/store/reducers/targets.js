@@ -41,20 +41,17 @@ export default function targets(state = initialState, action) {
     case `${types.CREATE_TARGET}_PENDING`:
       return {
         ...state,
-        [loadKey(action, 'targets')]: true,
       }
 
     case `${types.CREATE_TARGET}_FULFILLED`:
       return {
         ...state,
         // ...action.payload, // TODO: Add the target to targets...
-        [loadKey(action, 'targets')]: false,
       }
 
     case `${types.CREATE_TARGET}_REJECTED`:
       return {
         ...state,
-        [loadKey(action, 'targets')]: false,
       }
 
     default:

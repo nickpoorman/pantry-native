@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   ScrollView,
   StyleSheet,
   Text,
-  FlatList,
   TextInput,
   Button,
   View,
@@ -13,18 +14,46 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { purple, lightestPurple } from 'app/styles'
 import Layout from 'app/constants/Layout'
+import { createTarget, showToast } from 'app/store/actions'
 
+@connect(
+  state => ({
+    auth: state.auth,
+    ui: state.ui,
+  }),
+  { createTarget, showToast }
+)
 export default class NewTargetScreen extends React.Component {
   static navigationOptions = {
     title: 'New Target',
   }
 
+  static propTypes = {
+    auth: PropTypes.shape({}).isRequired,
+    createTarget: PropTypes.func.isRequired,
+    showToast: PropTypes.func.isRequired,
+    ui: PropTypes.shape({
+      toast: PropTypes.shape({
+        enabled: PropTypes.bool.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }
+
   state = {
+    name: '',
     url: '',
   }
 
+  onCreateItemPress = item => {
+    const { name, url } = this.state
+    // Dispatch a create target from the text
+    this.props
+      .createTarget({ name, url })
+      .then(() => this.props.navigation.goBack())
+      .then(() => this.props.showToast({ success: `Created target!` }))
+  }
+
   render() {
-    const data = Array.from({ length: 200 }, (_, n) => ({ key: `row-${n}` }))
     return (
       <ScrollView style={styles.container}>
         <View style={styles.formContainer}>
@@ -44,7 +73,7 @@ export default class NewTargetScreen extends React.Component {
             <TextInput
               style={styles.formField}
               placeholder='Enter a name for the target'
-              onChangeText={url => this.setState({ url })}
+              onChangeText={name => this.setState({ name })}
             />
           </View>
 
@@ -57,13 +86,12 @@ export default class NewTargetScreen extends React.Component {
               autoCorrect={false}
               keyboardType={Platform.OS === 'ios' ? 'url' : 'default'}
               returnKeyType='done'
+              textContentType='URL'
             />
           </View>
 
           <Button
-            onPress={() => {
-              // Dispatch a create target from the text
-            }}
+            onPress={this.onCreateItemPress}
             title='Create Target!'
             color={purple}
           />

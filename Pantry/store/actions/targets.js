@@ -15,27 +15,29 @@ export function loadTargets(options = { refreshing: false }) {
         refreshing: options.refreshing,
       },
       // unclear what to put here yet...
-      payload: TargetsStore.list().then(data => {
-        // TODO: Need to figure out how this comes back...
-        console.log(`TargetStore.list result: ${JSON.stringify(data)}`)
-        // const targets = data.targets.sortBy(targets, ['position', 'created_at'])
-        const targets = [
-          { id: uuid(), url: 'https://example.com/1' },
-          { id: uuid(), url: 'https://example.com/2' },
-          { id: uuid(), url: 'https://example.com/3' },
-        ]
+      payload: new Promise(() => console.log('Loading data from disk...')),
 
-        const normalized = normalize(
-          { targets },
-          {
-            targets: [targetEntity],
-          }
-        )
+      //   TargetsStore.list().then(data => {
+      //     // TODO: Need to figure out how this comes back...
+      //     console.log(`TargetStore.list result: ${JSON.stringify(data)}`)
+      //     // const targets = data.targets.sortBy(targets, ['position', 'created_at'])
+      //     const targets = [
+      //       { id: uuid(), url: 'https://example.com/1' },
+      //       { id: uuid(), url: 'https://example.com/2' },
+      //       { id: uuid(), url: 'https://example.com/3' },
+      //     ]
 
-        console.log(JSON.stringify(normalized))
+      //     const normalized = normalize(
+      //       { targets },
+      //       {
+      //         targets: [targetEntity],
+      //       }
+      //     )
 
-        return normalized
-      }),
+      //     console.log(JSON.stringify(normalized))
+
+      //     return normalized
+      //   }),
     })
   }
 }
@@ -43,7 +45,7 @@ export function loadTargets(options = { refreshing: false }) {
 export function createTarget(target) {
   const id = uuid()
   return (dispatch, getState) => {
-    dispatch({
+    return dispatch({
       type: types.CREATE_TARGET,
       // unclear what to put here yet... Will probably need to call backend when I implement that.
       payload: TargetsStore.set(id, { ...target, id: target.id || id }),

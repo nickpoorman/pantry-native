@@ -25,6 +25,10 @@ export default class TargetsScreen extends React.Component {
     this.props.loadTargets()
   }
 
+  onRefresh = () => {
+    this.props.loadTargets({ refreshing: true })
+  }
+
   render() {
     const { targets } = this.props
     console.log(`targets.log: ${JSON.stringify(targets)}`)
