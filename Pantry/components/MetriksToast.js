@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { StyleSheet, View, Text, Animated, Platform } from 'react-native'
+import { ifIphoneX } from 'react-native-iphone-x-helper'
 
 import { white, green, red } from 'app/styles'
 import { hideToast } from 'app/store/actions/toast'
@@ -12,14 +13,22 @@ const styles = StyleSheet.create({
     top: -64,
     right: 0,
     left: 0,
-    height: 64,
-    paddingLeft: 16,
     backgroundColor: green,
     shadowColor: 'rgba(0, 0, 0, 0.2)',
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,
+    ...ifIphoneX(
+      {
+        height: 87,
+        paddingTop: 40,
+      },
+      {
+        height: 64,
+        paddingTop: 20,
+      }
+    ),
   },
 
   text: {
@@ -29,7 +38,7 @@ const styles = StyleSheet.create({
 
     ...Platform.select({
       ios: {
-        marginTop: 12,
+        marginTop: 12, // 24
       },
     }),
   },
@@ -113,7 +122,9 @@ export default class MetriksToast extends Component {
       <Animated.View
         style={[styles.container, { top: slide, backgroundColor }]}
       >
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
           <Text style={styles.text}>{message}</Text>
         </View>
       </Animated.View>

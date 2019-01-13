@@ -19,6 +19,7 @@ export function load() {
         return user || { id: 0 }
       })
       .then(user => {
+        dispatch(showToast({ alert: 'Email or password are incorrect.' }))
         dispatch({
           type: 'SETUP_COMPLETE',
           user: user,

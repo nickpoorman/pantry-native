@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { StyleSheet, View, Text, Animated } from 'react-native'
+import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper'
 
 import { lightGray } from 'app/styles'
 
@@ -10,9 +11,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 52,
-    paddingLeft: 16,
+    height: 56,
     backgroundColor: lightGray,
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
   },
 
   text: {
@@ -28,7 +33,7 @@ export default class NoConnection extends Component {
 
   componentDidMount() {
     Animated.spring(this.state.fadeAnim, {
-      toValue: 49,
+      toValue: isIphoneX() ? getBottomSpace() : 49,
       duration: 2000,
     }).start()
   }
@@ -38,7 +43,9 @@ export default class NoConnection extends Component {
 
     return (
       <Animated.View style={[styles.container, { bottom: fadeAnim }]}>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
           <Text style={styles.text}>No network connection</Text>
         </View>
       </Animated.View>

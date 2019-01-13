@@ -119,6 +119,7 @@ export default class AppLoader extends React.Component {
               }
             }}
           />
+
           {ui.toast.enabled && <MetriksToast />}
           {ui.connectionStatus === 'none' && <NoConnection />}
         </View>
