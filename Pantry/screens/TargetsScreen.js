@@ -1,9 +1,22 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, FlatList, Button } from 'react-native'
+import { connect } from 'react-redux'
+import { loadTargets } from 'app/store/actions'
 
+@connect(
+  state => ({
+    ui: state.ui,
+  }),
+  { loadTargets }
+)
 export default class TargetsScreen extends React.Component {
   static navigationOptions = {
     title: 'Targets',
+  }
+
+  componentDidMount() {
+    // If we don't have targets... which we won't then load them
+    this.props.loadTargets()
   }
 
   render() {

@@ -14,7 +14,9 @@
     "@expo/samples": "2.1.1",
     "@nivo/pie": "^0.51.0",
     "expo": "^32.0.0",
+    "lodash.sortby": "^4.7.0",
     "native-base": "^2.10.0",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
@@ -27,7 +29,9 @@
     "redux": "^4.0.1",
     "redux-freeze": "^0.1.7",
     "redux-promise-middleware": "^5.1.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
