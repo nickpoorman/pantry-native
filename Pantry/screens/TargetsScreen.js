@@ -30,7 +30,7 @@ export default class TargetsScreen extends React.Component {
   // }
 
   componentDidMount() {
-    console.log('Mounted TargetsScreen')
+    // TODO: We should call this loadTargets when the app opens up.
     this.props.loadTargets()
   }
 
@@ -40,9 +40,6 @@ export default class TargetsScreen extends React.Component {
 
   render() {
     const { targets, targetsLoading, targetsRefreshing } = this.props
-    console.log(`targetsLoading: ${targetsLoading}`)
-    console.log(`targetsRefreshing: ${targetsRefreshing}`)
-    console.log(`targets.log: ${JSON.stringify(targets)}`)
 
     if (targetsLoading) {
       return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
