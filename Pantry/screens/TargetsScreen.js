@@ -8,8 +8,12 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 import { loadTargets } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
+import { purple } from 'app/styles'
+import TargetItem from 'app/components/TargetItem'
 
 @connect(
   state => ({
@@ -47,6 +51,16 @@ export default class TargetsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons
+            name='finance'
+            size={80}
+            color={purple}
+            style={styles.icon}
+          />
+        </View>
+
+        {/* TODO: Put this in the status bar */}
         <Button
           title='Add A New Target'
           onPress={() => {
@@ -58,16 +72,16 @@ export default class TargetsScreen extends React.Component {
           }}
         />
 
-        <Text>
+        {/* <Text>
           TODO. Put a button in here to add a new endpoint that will open a new
           window via navigation...
-        </Text>
+        </Text> */}
 
         <FlatList
           data={targets}
           // extraData={this.state} // trigger re-render when this changes
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <Text>{`${item.name} - ${item.url}`}</Text>}
+          renderItem={({ item }) => <TargetItem item={item} />}
           onRefresh={this.onRefresh}
           refreshing={targetsRefreshing}
         />
@@ -81,5 +95,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+  },
+  iconContainer: {
+    alignItems: 'center',
   },
 })
