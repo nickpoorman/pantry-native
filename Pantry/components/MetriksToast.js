@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { StyleSheet, View, Text, Animated, Platform } from 'react-native'
-import { ifIphoneX } from 'react-native-iphone-x-helper'
+import {
+  isIphoneX,
+  ifIphoneX,
+  getStatusBarHeight,
+} from 'react-native-iphone-x-helper'
 
 import { white, green, red } from 'app/styles'
 import { hideToast } from 'app/store/actions/toast'
@@ -10,7 +14,6 @@ import { hideToast } from 'app/store/actions/toast'
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: -64,
     right: 0,
     left: 0,
     backgroundColor: green,
@@ -21,10 +24,12 @@ const styles = StyleSheet.create({
     elevation: 1,
     ...ifIphoneX(
       {
-        height: 87,
-        paddingTop: 40,
+        top: -1 * getStatusBarHeight(),
+        height: 64 + getStatusBarHeight(),
+        paddingTop: getStatusBarHeight(),
       },
       {
+        top: -64,
         height: 64,
         paddingTop: 20,
       }
@@ -88,7 +93,7 @@ export default class MetriksToast extends Component {
   close(done) {
     setTimeout(() => {
       Animated.spring(this.state.slide, {
-        toValue: -70,
+        toValue: -70 - (isIphoneX() ? getStatusBarHeight() : 0),
         duration: 2000,
       }).start(() => {
         setTimeout(() => {
