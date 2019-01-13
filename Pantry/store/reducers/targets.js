@@ -4,7 +4,13 @@ const initialState = {
   targetsLoading: false,
   targetsRefreshing: false,
 
-  targets: {},
+  // This is something normalizr creates. Not sure what we should do with it...
+  result: {
+    targets: [], // these appear to be the IDs of the targets
+  },
+  entities: {
+    targets: {},
+  },
 }
 
 function loadKey(action, prefix) {
@@ -50,5 +56,8 @@ export default function targets(state = initialState, action) {
         ...state,
         [loadKey(action, 'targets')]: false,
       }
+
+    default:
+      return state
   }
 }

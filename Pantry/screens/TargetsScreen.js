@@ -2,10 +2,12 @@ import React from 'react'
 import { ScrollView, StyleSheet, Text, FlatList, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { loadTargets } from 'app/store/actions'
+import { targetsSelector } from 'app/store/selectors'
 
 @connect(
   state => ({
     ui: state.ui,
+    targets: targetsSelector(state),
   }),
   { loadTargets }
 )
@@ -14,13 +16,23 @@ export default class TargetsScreen extends React.Component {
     title: 'Targets',
   }
 
+  // static propTypes = {
+  //   targets: PropTypes.array.isRequired,
+  // }
+
   componentDidMount() {
     // If we don't have targets... which we won't then load them
     this.props.loadTargets()
   }
 
   render() {
-    const data = Array.from({ length: 10 }, (_, n) => ({ key: `row-${n}` }))
+    const { targets } = this.props
+    console.log(`targets.log: ${JSON.stringify(targets)}`)
+    // const data = Array.from({ length: 10 }, (_, n) => ({ key: `row-${n}` }))
+    const data = targets.map(target => ({
+      ...target,
+      key: target.id,
+    }))
     return (
       <ScrollView style={styles.container}>
         <Button

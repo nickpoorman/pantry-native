@@ -17,19 +17,24 @@ export function loadTargets(options = { refreshing: false }) {
       // unclear what to put here yet...
       payload: TargetsStore.list().then(data => {
         // TODO: Need to figure out how this comes back...
-        console.log(JSON.stringify(data))
+        console.log(`TargetStore.list result: ${JSON.stringify(data)}`)
         // const targets = data.targets.sortBy(targets, ['position', 'created_at'])
         const targets = [
           { id: uuid(), url: 'https://example.com/1' },
           { id: uuid(), url: 'https://example.com/2' },
           { id: uuid(), url: 'https://example.com/3' },
         ]
-        return normalize(
+
+        const normalized = normalize(
           { targets },
           {
             targets: [targetEntity],
           }
         )
+
+        console.log(JSON.stringify(normalized))
+
+        return normalized
       }),
     })
   }
