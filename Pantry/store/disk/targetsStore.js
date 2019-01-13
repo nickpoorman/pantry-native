@@ -17,9 +17,10 @@ export function del(key) {
 }
 
 export function list() {
-  // TODO: We might have to do some transform on this result
   return AsyncStorage.getAllKeys().then(keys =>
-    AsyncStorage.multiGet(targetKeys(keys))
+    AsyncStorage.multiGet(targetKeys(keys)).then(results =>
+      results.map(result => JSON.parse(result[1]))
+    )
   )
 }
 

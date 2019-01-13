@@ -21,10 +21,11 @@ export default class TargetsScreen extends React.Component {
   // }
 
   componentDidMount() {
-    // If we don't have targets... which we won't then load them
+    console.log('Mounted TargetsScreen')
     this.props.loadTargets()
   }
 
+  // TODO: Still need to implement pull to refresh...
   onRefresh = () => {
     this.props.loadTargets({ refreshing: true })
   }
@@ -57,7 +58,7 @@ export default class TargetsScreen extends React.Component {
 
         <FlatList
           data={data}
-          renderItem={({ item }) => <Text>{item.key}</Text>}
+          renderItem={({ item }) => <Text>{`${item.name} - ${item.url}`}</Text>}
         />
       </ScrollView>
     )

@@ -1,5 +1,5 @@
 import { normalize, schema } from 'normalizr'
-// import sortBy from 'lodash.sortby'
+import sortBy from 'lodash.sortby'
 import uuid from 'uuid'
 
 import * as TargetsStore from 'app/store/disk/targetsStore'
@@ -14,41 +14,26 @@ export function loadTargets(options = { refreshing: false }) {
       meta: {
         refreshing: options.refreshing,
       },
-      // unclear what to put here yet...
-      payload: new Promise(() => console.log('Loading data from disk...')),
-
-      //   TargetsStore.list().then(data => {
-      //     // TODO: Need to figure out how this comes back...
-      //     console.log(`TargetStore.list result: ${JSON.stringify(data)}`)
-      //     // const targets = data.targets.sortBy(targets, ['position', 'created_at'])
-      //     const targets = [
-      //       { id: uuid(), url: 'https://example.com/1' },
-      //       { id: uuid(), url: 'https://example.com/2' },
-      //       { id: uuid(), url: 'https://example.com/3' },
-      //     ]
-
-      //     const normalized = normalize(
-      //       { targets },
-      //       {
-      //         targets: [targetEntity],
-      //       }
-      //     )
-
-      //     console.log(JSON.stringify(normalized))
-
-      //     return normalized
-      //   }),
+      payload: TargetsStore.list().then(storedTargets => {
+        const targets = sortBy(storedTargets, ['position', 'createdAt', 'name'])
+        return normalize(
+          { targets },
+          {
+            targets: [targetEntity],
+          }
+        )
+      }),
     })
   }
 }
 
 export function createTarget(target) {
   const id = uuid()
-  return (dispatch, getState) => {
-    return dispatch({
+  const createdAt = new Date().toISOString()
+  const updatedAt = new Date().toISOString()
+  return (dispatch, getState) =>
+    dispatch({
       type: types.CREATE_TARGET,
-      // unclear what to put here yet... Will probably need to call backend when I implement that.
-      payload: TargetsStore.set(id, { ...target, id: target.id || id }),
-    })
-  }
+      payload: TargetsStore.set(id, { ...target, id, createdAt, updatedAt }),
+    }).then(() => dispatch(loadTargets({ refreshing: true })))
 }
