@@ -56,7 +56,7 @@ export default class TargetsScreen extends React.Component {
   // }
 
   componentDidMount() {
-    // TODO: We should call this loadTargets when the app opens up.
+    // We call this loadTargets when the app opens up.
     if (!this.props.targetsLoaded && !this.props.targetsLoading) {
       this.props.loadTargets()
     }
@@ -95,7 +95,7 @@ export default class TargetsScreen extends React.Component {
       currentTarget,
     } = this.props
 
-    if (targetsLoading) {
+    if (targetsLoading || targetsRefreshing) {
       return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
     }
 
@@ -112,7 +112,7 @@ export default class TargetsScreen extends React.Component {
 
         <FlatList
           data={targets}
-          extraData={this.state} // trigger re-render when this changes
+          extraData={{ ...this.state, ...this.props }} // trigger re-render when this changes
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
             <Swipeout
@@ -140,7 +140,7 @@ export default class TargetsScreen extends React.Component {
             </Swipeout>
           )}
           onRefresh={this.onRefresh}
-          refreshing={targetsRefreshing}
+          refreshing={targetsLoading || targetsRefreshing}
         />
       </View>
     )
