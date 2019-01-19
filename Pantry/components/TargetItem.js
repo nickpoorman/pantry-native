@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#fff',
     padding: 8,
+    paddingLeft: 12,
     marginBottom: 10,
     marginLeft: 10,
     marginRight: 10,
@@ -51,13 +52,10 @@ const styles = StyleSheet.create({
     borderColor: '#d6d7da',
     borderRadius: 7,
   },
-  bottomContainer: {
-    alignItems: 'flex-end',
-    paddingTop: 8,
-  },
   dateText: {
     fontSize: 8,
     color: darkerGray,
+    lineHeight: 12,
   },
   textContainer: {
     flexDirection: 'column',
@@ -65,10 +63,12 @@ const styles = StyleSheet.create({
   },
   textPrimary: {
     fontSize: 16,
+    lineHeight: 24,
   },
   textSecondary: {
     fontSize: 12,
     color: darkerGray,
+    lineHeight: 18,
   },
   radioIconContainer: {
     justifyContent: 'center',
