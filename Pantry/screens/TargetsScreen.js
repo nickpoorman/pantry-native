@@ -7,6 +7,7 @@ import {
   Button,
   ActivityIndicator,
   Platform,
+  TouchableHighlight,
 } from 'react-native'
 import { connect } from 'react-redux'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
@@ -15,6 +16,7 @@ import { loadTargets } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
 import { purple } from 'app/styles'
 import TargetItem from 'app/components/TargetItem'
+import Swipeout from 'react-native-swipeout'
 
 @connect(
   state => ({
@@ -60,6 +62,23 @@ export default class TargetsScreen extends React.Component {
     this.props.loadTargets({ refreshing: true })
   }
 
+  _onPressRow = () => {
+    console.log('Pressed row')
+  }
+
+  _onDeleteRow = id => {
+    console.log(`Trigger delete for target: ${id}`)
+    this._closeAllSwipeout()
+  }
+
+  _closeAllSwipeout = () => {
+    this.setState({ openSwipeout: null })
+  }
+
+  state = {
+    openSwipeout: null,
+  }
+
   render() {
     const { targets, targetsLoading, targetsRefreshing } = this.props
 
@@ -80,9 +99,26 @@ export default class TargetsScreen extends React.Component {
 
         <FlatList
           data={targets}
-          // extraData={this.state} // trigger re-render when this changes
+          extraData={this.state} // trigger re-render when this changes
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <TargetItem item={item} />}
+          renderItem={({ item }) => (
+            <Swipeout
+              close={this.state.openSwipeout !== item.id}
+              onOpen={() => this.setState({ openSwipeout: item.id })}
+              style={styles.swipeout}
+              right={[
+                {
+                  text: 'Delete',
+                  backgroundColor: 'red',
+                  onPress: () => {
+                    this._onDeleteRow(item.id)
+                  },
+                },
+              ]}
+            >
+              <TargetItem item={item} />
+            </Swipeout>
+          )}
           onRefresh={this.onRefresh}
           refreshing={targetsRefreshing}
         />
@@ -94,13 +130,15 @@ export default class TargetsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 10,
-    marginBottom: 10,
-    // backgroundColor: '#fff',
     backgroundColor: '#f0f0f0',
   },
   iconContainer: {
     alignItems: 'center',
     backgroundColor: '#fff',
+    paddingTop: 5,
+    marginBottom: 5,
+  },
+  swipeout: {
+    backgroundColor: '#f0f0f0',
   },
 })

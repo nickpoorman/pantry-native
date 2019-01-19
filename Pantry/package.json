@@ -24,6 +24,7 @@
     "react-native-iphone-x-helper": "^1.2.0",
     "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-svg-charts": "^5.2.0",
+    "react-native-swipeout": "^2.3.6",
     "react-native-webview": "^2.14.0",
     "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
