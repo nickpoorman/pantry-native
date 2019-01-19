@@ -41,7 +41,7 @@ export default class TargetsScreen extends React.Component {
             })
           }}
           // color={Platform.OS === 'ios' ? '#000' : null}
-          size={22}
+          size={28}
           color='#000'
           style={{ paddingRight: 8 }}
         />
