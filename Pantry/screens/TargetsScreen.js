@@ -24,6 +24,7 @@ import Swipeout from 'react-native-swipeout'
     targets: targetsSelector(state),
     targetsLoading: state.targets.targetsLoading,
     targetsRefreshing: state.targets.targetsRefreshing,
+    targetsLoaded: state.targets.targetsLoaded,
     currentTarget: state.targets.currentTarget,
   }),
   { loadTargets, setCurrentTarget }
@@ -56,7 +57,9 @@ export default class TargetsScreen extends React.Component {
 
   componentDidMount() {
     // TODO: We should call this loadTargets when the app opens up.
-    this.props.loadTargets()
+    if (!this.props.targetsLoaded && !this.props.targetsLoading) {
+      this.props.loadTargets()
+    }
   }
 
   onRefresh = () => {

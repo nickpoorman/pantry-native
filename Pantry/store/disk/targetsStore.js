@@ -1,14 +1,15 @@
 import { AsyncStorage } from 'react-native'
+import sortBy from 'lodash.sortby'
 
 const targetPrefix = 'target:'
 const targetKey = key => `${targetPrefix}${key}`
 
 export function get(key) {
-  return AsyncStorage.getItem(targetKey(key))
+  return AsyncStorage.getItem(targetKey(key)).then(value => JSON.parse(value))
 }
 
 export function set(key, target) {
-  console.log(`TargetStore.set(${targetKey(key)}, ${JSON.stringify(target)})`)
+  // console.log(`TargetStore.set(${targetKey(key)}, ${JSON.stringify(target)})`)
   return AsyncStorage.setItem(targetKey(key), JSON.stringify(target))
 }
 
@@ -18,9 +19,11 @@ export function del(key) {
 
 export function list() {
   return AsyncStorage.getAllKeys().then(keys =>
-    AsyncStorage.multiGet(targetKeys(keys)).then(results =>
-      results.map(result => JSON.parse(result[1]))
-    )
+    AsyncStorage.multiGet(targetKeys(keys))
+      .then(results => results.map(result => JSON.parse(result[1])))
+      .then(storedTargets =>
+        sortBy(storedTargets, ['position', 'createdAt', 'name'])
+      )
   )
 }
 

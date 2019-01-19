@@ -3,6 +3,7 @@ import * as types from 'app/store/constants/action-types'
 const initialState = {
   targetsLoading: false,
   targetsRefreshing: false,
+  targetsLoaded: false,
 
   // This is something normalizr creates. Not sure what we should do with it...
   result: {
@@ -31,6 +32,7 @@ export default function targets(state = initialState, action) {
       return {
         ...state,
         ...action.payload,
+        targetsLoaded: true,
         [loadKey(action, 'targets')]: false,
       }
 
@@ -56,10 +58,20 @@ export default function targets(state = initialState, action) {
         ...state,
       }
 
-    case types.SET_CURRENT_TARGET:
+    // No need to handle these right now
+    // case `${types.SET_CURRENT_TARGET}_PENDING`:
+    // case `${types.SET_CURRENT_TARGET}_REJECTED`:
+    case `${types.SET_CURRENT_TARGET}_FULFILLED`:
       return {
         ...state,
-        currentTarget: action.target,
+        currentTarget: action.payload.currentTarget,
+      }
+
+    case 'SETUP_COMPLETE':
+      return {
+        ...state,
+        ...action.targets,
+        targetsLoaded: true, // we've already loaded the targets at this point
       }
 
     default:

@@ -3,28 +3,31 @@ import sortBy from 'lodash.sortby'
 import uuid from 'uuid'
 
 import * as TargetsStore from 'app/store/disk/targetsStore'
+import * as StateStore from 'app/store/disk/stateStore'
 import * as types from 'app/store/constants/action-types'
 
 const targetEntity = new schema.Entity('targets')
 
+export function loadTargetsFromStore() {
+  return TargetsStore.list().then(targets =>
+    normalize(
+      { targets },
+      {
+        targets: [targetEntity],
+      }
+    )
+  )
+}
+
 export function loadTargets(options = { refreshing: false }) {
-  return (dispatch, getState) => {
-    return dispatch({
+  return (dispatch, getState) =>
+    dispatch({
       type: types.LOAD_TARGETS,
       meta: {
         refreshing: options.refreshing,
       },
-      payload: TargetsStore.list().then(storedTargets => {
-        const targets = sortBy(storedTargets, ['position', 'createdAt', 'name'])
-        return normalize(
-          { targets },
-          {
-            targets: [targetEntity],
-          }
-        )
-      }),
+      payload: loadTargetsFromStore(),
     })
-  }
 }
 
 export function createTarget(target) {
@@ -38,9 +41,12 @@ export function createTarget(target) {
     }).then(() => dispatch(loadTargets({ refreshing: true })))
 }
 
-export function setCurrentTarget(target) {
-  return {
-    type: types.SET_CURRENT_TARGET,
-    target,
-  }
+export function setCurrentTarget(id) {
+  return (dispatch, getState) =>
+    dispatch({
+      type: types.SET_CURRENT_TARGET,
+      payload: StateStore.setCurrentTarget(id).then(() => ({
+        currentTarget: id,
+      })),
+    })
 }
