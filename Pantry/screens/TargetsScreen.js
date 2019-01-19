@@ -6,9 +6,10 @@ import {
   FlatList,
   Button,
   ActivityIndicator,
+  Platform,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 import { loadTargets } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
@@ -25,8 +26,25 @@ import TargetItem from 'app/components/TargetItem'
   { loadTargets }
 )
 export default class TargetsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Targets',
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Targets',
+      headerRight: (
+        <MaterialIcons
+          name='add'
+          onPress={() => {
+            navigation.navigate('NewTarget', {
+              itemId: 86,
+              otherParam: 'anything you want here',
+            })
+          }}
+          // color={Platform.OS === 'ios' ? '#000' : null}
+          size={22}
+          color='#000'
+          style={{ paddingRight: 8 }}
+        />
+      ),
+    }
   }
 
   // static propTypes = {
@@ -60,23 +78,6 @@ export default class TargetsScreen extends React.Component {
           />
         </View>
 
-        {/* TODO: Put this in the status bar */}
-        <Button
-          title='Add A New Target'
-          onPress={() => {
-            /* 1. Navigate to the NewTarget route with params */
-            this.props.navigation.navigate('NewTarget', {
-              itemId: 86,
-              otherParam: 'anything you want here',
-            })
-          }}
-        />
-
-        {/* <Text>
-          TODO. Put a button in here to add a new endpoint that will open a new
-          window via navigation...
-        </Text> */}
-
         <FlatList
           data={targets}
           // extraData={this.state} // trigger re-render when this changes
@@ -93,11 +94,13 @@ export default class TargetsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    marginTop: 10,
+    marginBottom: 10,
     // backgroundColor: '#fff',
     backgroundColor: '#f0f0f0',
   },
   iconContainer: {
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
 })

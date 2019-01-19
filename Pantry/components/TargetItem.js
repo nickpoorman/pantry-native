@@ -26,7 +26,6 @@ export default class TargetItem extends React.Component {
           <Text style={styles.textSecondary}>{url}</Text>
         </View>
         <View style={styles.radioIconContainer}>
-          {/* md-square-outline md-square radio-button-checked radio-button-unchecked */}
           <MaterialIcons
             name={focused ? 'radio-button-checked' : 'radio-button-unchecked'}
             size={28}
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 8,
     paddingLeft: 12,
-    marginBottom: 10,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
     borderWidth: 0.1,
