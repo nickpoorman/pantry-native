@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'column',
     flexGrow: 1,
+    flexShrink: 1,
+    paddingRight: 8,
   },
   textPrimary: {
     fontSize: 16,
@@ -72,5 +74,9 @@ const styles = StyleSheet.create({
   },
   radioIconContainer: {
     justifyContent: 'center',
+    alignItems: 'flex-end',
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: 30,
   },
 })
