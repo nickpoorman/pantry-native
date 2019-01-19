@@ -42,21 +42,36 @@ export default function targets(state = initialState, action) {
         [loadKey(action, 'targets')]: false,
       }
 
-    case `${types.CREATE_TARGET}_PENDING`:
-      return {
-        ...state,
-      }
+    // We don't need any of these yet
+    // case `${types.CREATE_TARGET}_PENDING`:
+    //   return {
+    //     ...state,
+    //   }
 
-    case `${types.CREATE_TARGET}_FULFILLED`:
-      return {
-        ...state,
-        // ...action.payload, // TODO: Add the target to targets...
-      }
+    // case `${types.CREATE_TARGET}_FULFILLED`:
+    //   return {
+    //     ...state,
+    //   }
 
-    case `${types.CREATE_TARGET}_REJECTED`:
-      return {
-        ...state,
-      }
+    // case `${types.CREATE_TARGET}_REJECTED`:
+    //   return {
+    //     ...state,
+    //   }
+
+    // case `${types.REMOVE_TARGET}_PENDING`:
+    //   return {
+    //     ...state,
+    //   }
+
+    // case `${types.REMOVE_TARGET}_FULFILLED`:
+    //   return {
+    //     ...state,
+    //   }
+
+    // case `${types.REMOVE_TARGET}_REJECTED`:
+    //   return {
+    //     ...state,
+    //   }
 
     // No need to handle these right now
     // case `${types.SET_CURRENT_TARGET}_PENDING`:
@@ -71,7 +86,6 @@ export default function targets(state = initialState, action) {
       return {
         ...state,
         ...action.targets,
-        targetsLoaded: true, // we've already loaded the targets at this point
       }
 
     default:

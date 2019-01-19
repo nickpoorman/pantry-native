@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
-import { loadTargets, setCurrentTarget } from 'app/store/actions'
+import { loadTargets, setCurrentTarget, removeTarget } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
 import { purple, offWhite, red, black } from 'app/styles'
 import TargetItem from 'app/components/TargetItem'
@@ -27,7 +27,7 @@ import Swipeout from 'react-native-swipeout'
     targetsLoaded: state.targets.targetsLoaded,
     currentTarget: state.targets.currentTarget,
   }),
-  { loadTargets, setCurrentTarget }
+  { loadTargets, setCurrentTarget, removeTarget }
 )
 export default class TargetsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -72,10 +72,11 @@ export default class TargetsScreen extends React.Component {
     this.props.setCurrentTarget(item.id)
   }
 
-  _onDeleteTarget = id => {
+  _onRemoveTarget = item => {
     // TODO: Fire an action that deletes the target
-    console.log(`Trigger delete for target: ${id}`)
+    console.log(`Trigger delete for target: ${item.id}`)
     this._closeAllSwipeout()
+    this.props.removeTarget(item.id)
   }
 
   _closeAllSwipeout = () => {
@@ -123,7 +124,7 @@ export default class TargetsScreen extends React.Component {
                   text: 'Delete',
                   backgroundColor: red,
                   onPress: () => {
-                    this._onDeleteTarget(item.id)
+                    this._onRemoveTarget(item)
                   },
                 },
               ]}

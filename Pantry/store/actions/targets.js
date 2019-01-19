@@ -41,6 +41,25 @@ export function createTarget(target) {
     }).then(() => dispatch(loadTargets({ refreshing: true })))
 }
 
+export function removeTarget(id) {
+  return (dispatch, getState) =>
+    dispatch({
+      type: types.REMOVE_TARGET,
+      payload: TargetsStore.del(id),
+    })
+      .then(() => dispatch(loadTargets({ refreshing: true })))
+      .then(() => {
+        const { targets } = getState()
+        const { currentTarget, result } = targets
+        if (currentTarget === id) {
+          // We removed the current target so select another one.
+          if (result && result.targets && result.targets.length) {
+            return dispatch(setCurrentTarget(result.targets[0]))
+          }
+        }
+      })
+}
+
 export function setCurrentTarget(id) {
   return (dispatch, getState) =>
     dispatch({
