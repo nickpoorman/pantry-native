@@ -95,7 +95,7 @@ export default class TargetsScreen extends React.Component {
       currentTarget,
     } = this.props
 
-    if (targetsLoading || targetsRefreshing) {
+    if (targetsLoading) {
       return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
     }
 
@@ -140,7 +140,7 @@ export default class TargetsScreen extends React.Component {
             </Swipeout>
           )}
           onRefresh={this.onRefresh}
-          refreshing={targetsLoading || targetsRefreshing}
+          refreshing={targetsRefreshing}
         />
       </View>
     )
