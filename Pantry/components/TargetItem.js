@@ -7,6 +7,7 @@ import { darkestGray, darkerGray } from 'app/styles'
 
 export default class TargetItem extends React.Component {
   static propTypes = {
+    focused: PropTypes.bool,
     item: PropTypes.shape({
       name: PropTypes.string,
       url: PropTypes.string,
@@ -15,9 +16,8 @@ export default class TargetItem extends React.Component {
   }
 
   render() {
-    const { item } = this.props
+    const { item, focused } = this.props
     const { name, url, createdAt } = item
-    const focused = false
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>

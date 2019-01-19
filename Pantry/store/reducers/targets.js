@@ -11,6 +11,8 @@ const initialState = {
   entities: {
     targets: {},
   },
+
+  currentTarget: null,
 }
 
 function loadKey(action, prefix) {
@@ -52,6 +54,12 @@ export default function targets(state = initialState, action) {
     case `${types.CREATE_TARGET}_REJECTED`:
       return {
         ...state,
+      }
+
+    case types.SET_CURRENT_TARGET:
+      return {
+        ...state,
+        currentTarget: action.target,
       }
 
     default:

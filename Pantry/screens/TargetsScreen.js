@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux'
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
-import { loadTargets } from 'app/store/actions'
+import { loadTargets, setCurrentTarget } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
 import { purple, offWhite, red, black } from 'app/styles'
 import TargetItem from 'app/components/TargetItem'
@@ -24,8 +24,9 @@ import Swipeout from 'react-native-swipeout'
     targets: targetsSelector(state),
     targetsLoading: state.targets.targetsLoading,
     targetsRefreshing: state.targets.targetsRefreshing,
+    currentTarget: state.targets.currentTarget,
   }),
-  { loadTargets }
+  { loadTargets, setCurrentTarget }
 )
 export default class TargetsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -62,9 +63,10 @@ export default class TargetsScreen extends React.Component {
     this.props.loadTargets({ refreshing: true })
   }
 
+  // Fires an action that changes the selected target
   _onSelectTarget = item => {
-    // TODO: Fire an action that changes the selected target
     console.log(`Pressed row: ${item.id}`)
+    this.props.setCurrentTarget(item.id)
   }
 
   _onDeleteTarget = id => {
@@ -82,7 +84,12 @@ export default class TargetsScreen extends React.Component {
   }
 
   render() {
-    const { targets, targetsLoading, targetsRefreshing } = this.props
+    const {
+      targets,
+      targetsLoading,
+      targetsRefreshing,
+      currentTarget,
+    } = this.props
 
     if (targetsLoading) {
       return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
@@ -124,7 +131,7 @@ export default class TargetsScreen extends React.Component {
                 }}
                 underlayColor={offWhite}
               >
-                <TargetItem item={item} />
+                <TargetItem item={item} focused={item.id == currentTarget} />
               </TouchableHighlight>
             </Swipeout>
           )}

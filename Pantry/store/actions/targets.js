@@ -37,3 +37,10 @@ export function createTarget(target) {
       payload: TargetsStore.set(id, { ...target, id, createdAt, updatedAt }),
     }).then(() => dispatch(loadTargets({ refreshing: true })))
 }
+
+export function setCurrentTarget(target) {
+  return {
+    type: types.SET_CURRENT_TARGET,
+    target,
+  }
+}
