@@ -14,7 +14,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 import { loadTargets } from 'app/store/actions'
 import { targetsSelector } from 'app/store/selectors'
-import { purple } from 'app/styles'
+import { purple, offWhite, red, black } from 'app/styles'
 import TargetItem from 'app/components/TargetItem'
 import Swipeout from 'react-native-swipeout'
 
@@ -42,7 +42,7 @@ export default class TargetsScreen extends React.Component {
           }}
           // color={Platform.OS === 'ios' ? '#000' : null}
           size={28}
-          color='#000'
+          color={black}
           style={{ paddingRight: 8 }}
         />
       ),
@@ -62,11 +62,13 @@ export default class TargetsScreen extends React.Component {
     this.props.loadTargets({ refreshing: true })
   }
 
-  _onPressRow = () => {
-    console.log('Pressed row')
+  _onSelectTarget = item => {
+    // TODO: Fire an action that changes the selected target
+    console.log(`Pressed row: ${item.id}`)
   }
 
-  _onDeleteRow = id => {
+  _onDeleteTarget = id => {
+    // TODO: Fire an action that deletes the target
     console.log(`Trigger delete for target: ${id}`)
     this._closeAllSwipeout()
   }
@@ -109,14 +111,21 @@ export default class TargetsScreen extends React.Component {
               right={[
                 {
                   text: 'Delete',
-                  backgroundColor: 'red',
+                  backgroundColor: red,
                   onPress: () => {
-                    this._onDeleteRow(item.id)
+                    this._onDeleteTarget(item.id)
                   },
                 },
               ]}
             >
-              <TargetItem item={item} />
+              <TouchableHighlight
+                onPress={() => {
+                  this._onSelectTarget(item)
+                }}
+                underlayColor={offWhite}
+              >
+                <TargetItem item={item} />
+              </TouchableHighlight>
             </Swipeout>
           )}
           onRefresh={this.onRefresh}

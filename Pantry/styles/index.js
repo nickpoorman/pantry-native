@@ -12,6 +12,7 @@ export const mediumPurple = '#aa00ff'
 export const lightPurplie = '#cc66ff'
 export const lightestPurple = '#eeccff'
 
+export const offWhite = '#f6f6f6'
 export const white = '#fff'
 export const blue = '#1E91EA'
 export const red = '#E25858'
