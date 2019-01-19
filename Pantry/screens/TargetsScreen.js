@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
+    backgroundColor: '#f0f0f0',
   },
   iconContainer: {
     alignItems: 'center',
