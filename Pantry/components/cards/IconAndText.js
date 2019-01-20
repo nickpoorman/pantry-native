@@ -2,25 +2,42 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { CardText } from 'app/components/cards/CardText'
-import { LinkIcon } from 'app/components/LinkIcon'
+import { DynamicIcon } from 'app/components/DynamicIcon'
 
 export class IconAndText extends React.Component {
-  render() {
-    const { iconPosition } = this.props
+  static propTypes = {
+    text: PropTypes.shape({}),
+    icon: PropTypes.shape({}),
+  }
 
-    const renderIcon = (
+  static defaultProps = {
+    text: {},
+    icon: {},
+  }
+
+  render() {
+    const { icon, text } = this.props
+    const { position } = icon
+    var validIconPosition = position == 'right' || position == 'left'
+    const iconRight = position == 'right'
+
+    const renderIcon = icon.source && icon.name && (
       <View style={styles.iconContainer}>
-        <LinkIcon />
+        <DynamicIcon
+          source={icon.source}
+          name={icon.name}
+          nameIOS={icon.nameIOS}
+        />
       </View>
     )
 
     return (
       <View style={styles.cardFlex}>
-        {iconPosition == 'left' && renderIcon}
+        {validIconPosition && !iconRight && renderIcon}
         <View style={styles.textContainer}>
-          <CardText />
+          <CardText text={text} />
         </View>
-        {iconPosition == 'right' && renderIcon}
+        {validIconPosition && iconRight && renderIcon}
       </View>
     )
   }

@@ -10,34 +10,49 @@ import { ProgressCircleChart } from 'app/components/charts/ProgressCircleChart'
 import { BarChart } from 'app/components/charts/BarChart'
 
 export class ChartAndText extends React.Component {
+  static propTypes = {
+    chartType: PropTypes.string.isRequired,
+    text: PropTypes.shape({}).isRequired,
+    chart: PropTypes.shape({
+      data: PropTypes.any,
+    }).isRequired,
+  }
+
+  static defaultProps = {
+    chartType: '',
+    text: {},
+    chart: {},
+  }
+
   renderChartContainer() {
     // return <View style={styles.chartContainer}>{this.renderChartByType()}</View>
     return this.renderChartByType()
   }
 
   renderChartByType() {
-    const { chartType } = this.props
+    const { chartType, chart } = this.props
+    const { data } = chart
     if (chartType == 'pie') {
-      return <PieChart />
+      return <PieChart data={data} />
     } else if (chartType == 'line') {
-      return <LineChart />
+      return <LineChart data={data} />
     } else if (chartType == 'area') {
-      return <AreaChart />
+      return <AreaChart data={data} />
     } else if (chartType == 'progress') {
-      return <ProgressCircleChart />
+      return <ProgressCircleChart data={data} />
     } else if (chartType == 'bar') {
-      return <BarChart />
+      return <BarChart data={data} />
     }
   }
 
   render() {
-    const { chartPosition } = this.props
+    const { chartPosition, text } = this.props
     return (
       <View style={styles.cardFlex}>
         {/* We could allow them to specify if the chart is left or right but I think it's going to make the UI ugly. */}
         {/* {chartPosition == 'left' && this.renderChartByType()} */}
         <View style={styles.textContainer}>
-          <CardText />
+          <CardText text={text} />
         </View>
         <View style={styles.chartContainer}>
           {chartPosition == 'right' && this.renderChartContainer()}

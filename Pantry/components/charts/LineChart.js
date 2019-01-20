@@ -1,28 +1,21 @@
 import React from 'react'
 import { LineChart as SVGLineChart, Grid } from 'react-native-svg-charts'
+import PropTypes from 'prop-types'
+
 import graphStyles from 'app/assets/styles/graph-styles'
 import { colors } from 'app/styles'
 
 export class LineChart extends React.PureComponent {
-  render() {
-    const data = [
-      50,
-      10,
-      40,
-      95,
-      -4,
-      -24,
-      85,
-      91,
-      35,
-      53,
-      -53,
-      24,
-      50,
-      -20,
-      -80,
-    ]
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }
 
+  static defaultProps = {
+    data: [],
+  }
+
+  render() {
+    const { data } = this.props
     return (
       <SVGLineChart
         style={{ ...graphStyles.chartFlex, ...graphStyles.lineChart }}

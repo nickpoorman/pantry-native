@@ -1,22 +1,106 @@
 import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
+import { connect } from 'react-redux'
+import get from 'lodash.get'
+import { PropTypes } from 'prop-types'
+import hash from 'object-hash'
 
 import { CardText } from 'app/components/cards/CardText'
 import { ChartAndText } from 'app/components/cards/ChartAndText'
 import { IconAndText } from 'app/components/cards/IconAndText'
 
+@connect(
+  state => ({
+    ui: state.ui,
+    currentTarget: state.targets.currentTarget,
+    currentTargetData: state.targets.currentTargetData,
+  }),
+  {}
+)
 export class Cards extends React.Component {
-  static navigationOptions = {
-    header: null,
+  // static navigationOptions = {
+  //   header: null,
+  // }
+
+  static propTypes = {
+    ui: PropTypes.shape({
+      toast: PropTypes.shape({
+        alert: PropTypes.string,
+        success: PropTypes.string,
+      }),
+    }).isRequired,
+    currentTarget: PropTypes.string,
+    currentTargetData: PropTypes.shape({}),
+  }
+
+  static defaultProps = {
+    currentTarget: '',
+    currentTargetData: {},
+  }
+
+  buildComponentFromCard = card => {
+    switch (card.cardType) {
+      case 'text':
+        return <CardText text={card.text} />
+      case 'icon-with-text':
+        return <IconAndText text={card.text} icon={card.icon} />
+      case 'pie-chart-with-text':
+        return (
+          <ChartAndText chartType='pie' text={card.text} chart={card.chart} />
+        )
+      case 'area-chart-with-text':
+        return (
+          <ChartAndText chartType='area' text={card.text} chart={card.chart} />
+        )
+      case 'line-chart-with-text':
+        return (
+          <ChartAndText chartType='line' text={card.text} chart={card.chart} />
+        )
+      case 'progress-chart-with-text':
+        return (
+          <ChartAndText
+            chartType='progress'
+            text={card.text}
+            chart={card.chart}
+          />
+        )
+      case 'bar-chart-with-text':
+        return (
+          <ChartAndText chartType='bar' text={card.text} chart={card.chart} />
+        )
+      default:
+        return null
+    }
   }
 
   render() {
+    const { currentTargetData } = this.props
+    if (!currentTargetData) {
+      return <Text>TODO: Create empty state for cards</Text>
+    }
+
+    const { cards } = currentTargetData
+    if (!cards) {
+      return <Text>TODO: Create an error state when cards is not there</Text>
+    }
+
+    const components = cards.map(card => {
+      const key = hash(card)
+      const component = this.buildComponentFromCard(card)
+      return (
+        <View key={key} style={styles.card}>
+          {component}
+        </View>
+      )
+    })
+
     return (
       <ScrollView
         style={styles.scrollContainer}
         contentContainerStyle={styles.scrollContentContainer}
       >
-        <View style={styles.card}>
+        {components}
+        {/* <View style={styles.card}>
           <CardText />
         </View>
 
@@ -46,7 +130,7 @@ export class Cards extends React.Component {
 
         <View style={styles.card}>
           <ChartAndText chartType='bar' />
-        </View>
+        </View> */}
       </ScrollView>
     )
   }
