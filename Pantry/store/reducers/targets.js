@@ -13,8 +13,8 @@ const initialState = {
     targets: {},
   },
 
-  currentTarget: null,
-  currentTargetData: null,
+  currentTarget: '',
+  currentTargetData: { cards: [] },
 }
 
 function loadKey(action, prefix) {

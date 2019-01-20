@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import get from 'lodash.get'
 import { PropTypes } from 'prop-types'
@@ -30,12 +30,14 @@ export class Cards extends React.Component {
       }),
     }).isRequired,
     currentTarget: PropTypes.string,
-    currentTargetData: PropTypes.shape({}),
+    currentTargetData: PropTypes.shape({
+      cards: PropTypes.arrayOf(PropTypes.object),
+    }),
   }
 
   static defaultProps = {
     currentTarget: '',
-    currentTargetData: {},
+    currentTargetData: { cards: [] },
   }
 
   buildComponentFromCard = card => {
