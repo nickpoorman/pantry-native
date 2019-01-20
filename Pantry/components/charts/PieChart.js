@@ -17,7 +17,8 @@ export class PieChart extends React.PureComponent {
 
   getSortedData = () => {
     const { data } = this.props
-    return data.sort((a, b) => a - b)
+    // We must create a copy of the array so we don't modify it in place.
+    return data.slice(0).sort((a, b) => a - b)
   }
 
   render() {
@@ -38,7 +39,7 @@ export class PieChart extends React.PureComponent {
           fill: getNextColor(),
           onPress: () => console.log('press', index),
         },
-        key: `pie-${index}`,
+        key: `pie-${index}-${value}`,
       }))
 
     return (

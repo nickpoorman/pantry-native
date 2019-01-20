@@ -1,0 +1,12 @@
+{
+  "cards": [
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Some primary text",
+        "secondary": "With secondary text"
+      }
+    }
+  ]
+}
