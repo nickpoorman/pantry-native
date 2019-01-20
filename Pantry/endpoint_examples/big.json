@@ -1,0 +1,1114 @@
+{
+  "cards": [
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "72",
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": "40",
+        "primary": "Sales Completed",
+        "secondary": "60 pending | 20 waiting"
+      },
+      "chart": {
+        "data": [60, 40, 20]
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": {
+        "data": 0.7
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [
+          50,
+          10,
+          40,
+          95,
+          -4,
+          -24,
+          null,
+          85,
+          null,
+          0,
+          35,
+          53,
+          -53,
+          -24,
+          50,
+          -20,
+          -80
+        ]
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Account Balance",
+        "secondary": "Per Day"
+      },
+      "chart": {
+        "data": [50, 10, -24, 35, 53, -53, -24]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue pressure",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.3
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Debug Page",
+        "secondary": "Click icon to go to debug page"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Disk Usage",
+        "secondary": "Last 12 hours"
+      },
+      "chart": {
+        "data": [50, 10, 35, 53, -53, 24, 50, 40, 95, -4, -24, 85]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Phone Calls",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [10, 20, 15, 16, 30, 4, 9, 39, 16, 65, 72, 102]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue Volume",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.93
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "In Progress Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.23
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Scheduled Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.68
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "On Deck Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.22
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Dead Leter Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": [12, 45, 3, 9, 45, 78, 103, 1034, 20, 18, 56, 92]
+      }
+    },
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "72",
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": "40",
+        "primary": "Sales Completed",
+        "secondary": "60 pending | 20 waiting"
+      },
+      "chart": {
+        "data": [60, 40, 20]
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": {
+        "data": 0.7
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [
+          50,
+          10,
+          40,
+          95,
+          -4,
+          -24,
+          null,
+          85,
+          null,
+          0,
+          35,
+          53,
+          -53,
+          -24,
+          50,
+          -20,
+          -80
+        ]
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Account Balance",
+        "secondary": "Per Day"
+      },
+      "chart": {
+        "data": [50, 10, -24, 35, 53, -53, -24]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue pressure",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.3
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Debug Page",
+        "secondary": "Click icon to go to debug page"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Disk Usage",
+        "secondary": "Last 12 hours"
+      },
+      "chart": {
+        "data": [50, 10, 35, 53, -53, 24, 50, 40, 95, -4, -24, 85]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Phone Calls",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [10, 20, 15, 16, 30, 4, 9, 39, 16, 65, 72, 102]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue Volume",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.93
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "In Progress Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.23
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Scheduled Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.68
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "On Deck Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.22
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Dead Leter Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": [12, 45, 3, 9, 45, 78, 103, 1034, 20, 18, 56, 92]
+      }
+    },
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "72",
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": "40",
+        "primary": "Sales Completed",
+        "secondary": "60 pending | 20 waiting"
+      },
+      "chart": {
+        "data": [60, 40, 20]
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": {
+        "data": 0.7
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [
+          50,
+          10,
+          40,
+          95,
+          -4,
+          -24,
+          null,
+          85,
+          null,
+          0,
+          35,
+          53,
+          -53,
+          -24,
+          50,
+          -20,
+          -80
+        ]
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Account Balance",
+        "secondary": "Per Day"
+      },
+      "chart": {
+        "data": [50, 10, -24, 35, 53, -53, -24]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue pressure",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.3
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Debug Page",
+        "secondary": "Click icon to go to debug page"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Disk Usage",
+        "secondary": "Last 12 hours"
+      },
+      "chart": {
+        "data": [50, 10, 35, 53, -53, 24, 50, 40, 95, -4, -24, 85]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Phone Calls",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [10, 20, 15, 16, 30, 4, 9, 39, 16, 65, 72, 102]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue Volume",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.93
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "In Progress Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.23
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Scheduled Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.68
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "On Deck Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.22
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Dead Leter Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": [12, 45, 3, 9, 45, 78, 103, 1034, 20, 18, 56, 92]
+      }
+    },
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "72",
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": "40",
+        "primary": "Sales Completed",
+        "secondary": "60 pending | 20 waiting"
+      },
+      "chart": {
+        "data": [60, 40, 20]
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": {
+        "data": 0.7
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [
+          50,
+          10,
+          40,
+          95,
+          -4,
+          -24,
+          null,
+          85,
+          null,
+          0,
+          35,
+          53,
+          -53,
+          -24,
+          50,
+          -20,
+          -80
+        ]
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Account Balance",
+        "secondary": "Per Day"
+      },
+      "chart": {
+        "data": [50, 10, -24, 35, 53, -53, -24]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue pressure",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.3
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Debug Page",
+        "secondary": "Click icon to go to debug page"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Disk Usage",
+        "secondary": "Last 12 hours"
+      },
+      "chart": {
+        "data": [50, 10, 35, 53, -53, 24, 50, 40, 95, -4, -24, 85]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Phone Calls",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [10, 20, 15, 16, 30, 4, 9, 39, 16, 65, 72, 102]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue Volume",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.93
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "In Progress Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.23
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Scheduled Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.68
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "On Deck Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.22
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Dead Leter Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": [12, 45, 3, 9, 45, 78, 103, 1034, 20, 18, 56, 92]
+      }
+    },
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": "72",
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": "40",
+        "primary": "Sales Completed",
+        "secondary": "60 pending | 20 waiting"
+      },
+      "chart": {
+        "data": [60, 40, 20]
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": {
+        "data": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": {
+        "data": 0.7
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [
+          50,
+          10,
+          40,
+          95,
+          -4,
+          -24,
+          null,
+          85,
+          null,
+          0,
+          35,
+          53,
+          -53,
+          -24,
+          50,
+          -20,
+          -80
+        ]
+      }
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Account Balance",
+        "secondary": "Per Day"
+      },
+      "chart": {
+        "data": [50, 10, -24, 35, 53, -53, -24]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue pressure",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.3
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Debug Page",
+        "secondary": "Click icon to go to debug page"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Disk Usage",
+        "secondary": "Last 12 hours"
+      },
+      "chart": {
+        "data": [50, 10, 35, 53, -53, 24, 50, 40, 95, -4, -24, 85]
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "70",
+        "primary": "Phone Calls",
+        "secondary": "Per Hour"
+      },
+      "chart": {
+        "data": [10, 20, 15, 16, 30, 4, 9, 39, 16, 65, 72, 102]
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Queue Volume",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.93
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "In Progress Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.23
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Scheduled Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.68
+      }
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "On Deck Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": 0.22
+      }
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Dead Leter Queue",
+        "secondary": ""
+      },
+      "chart": {
+        "data": [12, 45, 3, 9, 45, 78, 103, 1034, 20, 18, 56, 92]
+      }
+    }
+  ]
+}

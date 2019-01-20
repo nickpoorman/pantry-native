@@ -86,11 +86,11 @@ export class Cards extends React.Component {
       return <Text>TODO: Create an error state when cards is not there</Text>
     }
 
-    const components = cards.map(card => {
+    const components = cards.map((card, index) => {
       const key = hash(card)
       const component = this.buildComponentFromCard(card)
       return (
-        <View key={key} style={styles.card}>
+        <View key={`${key}-${index}`} style={styles.card}>
           {component}
         </View>
       )
