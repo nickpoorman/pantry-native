@@ -9,7 +9,6 @@ export function get(key) {
 }
 
 export function set(key, target) {
-  // console.log(`TargetStore.set(${targetKey(key)}, ${JSON.stringify(target)})`)
   return AsyncStorage.setItem(targetKey(key), JSON.stringify(target))
 }
 

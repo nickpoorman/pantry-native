@@ -69,7 +69,6 @@ export function load() {
 
         const { user, targets, currentTarget, currentTargetData } = context
 
-        // console.log(`context: ${JSON.stringify(context, null, 2)}`)
         dispatch({
           type: 'SETUP_COMPLETE',
           user,

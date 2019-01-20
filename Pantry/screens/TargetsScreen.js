@@ -68,13 +68,11 @@ export default class TargetsScreen extends React.Component {
 
   // Fires an action that changes the selected target
   _onSelectTarget = item => {
-    console.log(`Pressed row: ${item.id}`)
     this.props.setCurrentTarget(item.id)
   }
 
+  // Fires an action that deletes the target
   _onRemoveTarget = item => {
-    // TODO: Fire an action that deletes the target
-    console.log(`Trigger delete for target: ${item.id}`)
     this._closeAllSwipeout()
     this.props.removeTarget(item.id)
   }

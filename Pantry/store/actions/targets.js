@@ -72,10 +72,8 @@ export function setCurrentTarget(id) {
     }).then(() => {
       const { targets } = getState()
       const { entities } = targets
-      console.log(`entities: ${JSON.stringify(entities, null, 2)}`)
       if (entities && entities.targets) {
         const currentTarget = entities.targets[id]
-        console.log(`currentTarget: ${JSON.stringify(currentTarget, null, 2)}`)
         if (currentTarget) {
           return dispatch(loadTargetData(currentTarget))
         }
@@ -84,7 +82,6 @@ export function setCurrentTarget(id) {
 }
 
 export function loadTargetData(target) {
-  console.log(`loadTargetData: ${JSON.stringify(target)}`)
   return (dispatch, getState) =>
     dispatch({
       type: types.LOAD_TARGET_DATA,
