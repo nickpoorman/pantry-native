@@ -1,0 +1,103 @@
+{
+  "cards": [
+    {
+      "cardType": "text",
+      "text": {
+        "primaryLarge": 72,
+        "primary": "Orders",
+        "secondary": "38 shipped"
+      }
+    },
+    {
+      "cardType": "pie-chart-with-text",
+      "text": {
+        "primaryLarge": 40,
+        "primary": "Sales Completed",
+        "secondary": "60 pending. 20 waiting"
+      },
+      "chart": [60, 40, 20]
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "left",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "icon-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Sales Dashboard",
+        "secondary": "Click icon to go to dashboard"
+      },
+      "icon": {
+        "position": "right",
+        "source": "Ionicons",
+        "name": "md-link",
+        "nameIOS": "ios-link"
+      }
+    },
+    {
+      "cardType": "area-chart-with-text",
+      "text": {
+        "primaryLarge": 70,
+        "primary": "Sales & Refunds",
+        "secondary": "Since yesterday"
+      },
+      "chart": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+    },
+    {
+      "cardType": "line-chart-with-text",
+      "text": {
+        "primaryLarge": 70,
+        "primary": "Transactions",
+        "secondary": "Since yesterday"
+      },
+      "chart": [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+    },
+    {
+      "cardType": "progress-chart-with-text",
+      "text": {
+        "primaryLarge": "140",
+        "primary": "of 200",
+        "secondary": "Support Issues Addressed"
+      },
+      "chart": 0.7
+    },
+    {
+      "cardType": "bar-chart-with-text",
+      "text": {
+        "primaryLarge": "",
+        "primary": "Marketing Budget Variance",
+        "secondary": "Per Hour"
+      },
+      "chart": [
+        50,
+        10,
+        40,
+        95,
+        -4,
+        -24,
+        null,
+        85,
+        null,
+        0,
+        35,
+        53,
+        -53,
+        -24,
+        50,
+        -20,
+        -80
+      ]
+    }
+  ]
+}

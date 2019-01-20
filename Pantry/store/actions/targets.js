@@ -6,6 +6,8 @@ import * as TargetsStore from 'app/store/disk/targetsStore'
 import * as StateStore from 'app/store/disk/stateStore'
 import * as types from 'app/store/constants/action-types'
 
+import { fetchTarget } from 'app/store/lib/target'
+
 const targetEntity = new schema.Entity('targets')
 
 export function loadTargetsFromStore() {
@@ -67,5 +69,13 @@ export function setCurrentTarget(id) {
       payload: StateStore.setCurrentTarget(id).then(() => ({
         currentTarget: id,
       })),
+    })
+}
+
+export function loadTargetData(target) {
+  return (dispatch, getState) =>
+    dispatch({
+      type: types.LOAD_TARGET_DATA,
+      payload: fetchTarget(target),
     })
 }

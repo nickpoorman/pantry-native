@@ -14,6 +14,7 @@ const initialState = {
   },
 
   currentTarget: null,
+  currentTargetData: null,
 }
 
 function loadKey(action, prefix) {
