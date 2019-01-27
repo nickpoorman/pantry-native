@@ -10,6 +10,7 @@ import {
 import { WebBrowser } from 'expo'
 
 import { Cards } from 'app/components/Cards'
+import { Scratchpad } from 'app/components/Scratchpad'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +24,8 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    return <Cards />
+    // return <Cards />
+    return <Scratchpad />
   }
 
   _maybeRenderDevelopmentModeWarning() {
