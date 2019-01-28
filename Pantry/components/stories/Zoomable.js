@@ -9,7 +9,7 @@ const { Circle, G, Line, Rect, Text } = Svg
 
 const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
 
-class Clickable extends React.PureComponent {
+class Zoomable extends React.PureComponent {
   state = {
     selectedX: null,
     height: null,
@@ -142,4 +142,4 @@ class Clickable extends React.PureComponent {
   }
 }
 
-export default Clickable
+export default Zoomable
