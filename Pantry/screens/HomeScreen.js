@@ -24,8 +24,8 @@ export default class HomeScreen extends React.Component {
   }
 
   render() {
-    // return <Cards />
-    return <Scratchpad />
+    return <Cards />
+    // return <Scratchpad />
   }
 
   _maybeRenderDevelopmentModeWarning() {

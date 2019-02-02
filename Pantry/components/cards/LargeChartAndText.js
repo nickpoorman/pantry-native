@@ -8,8 +8,9 @@ import { LineChart } from 'app/components/charts/LineChart'
 import { AreaChart } from 'app/components/charts/AreaChart'
 import { ProgressCircleChart } from 'app/components/charts/ProgressCircleChart'
 import { BarChart } from 'app/components/charts/BarChart'
+import { ChartWithAxis } from 'app/components/charts/ChartWithAxis'
 
-export class ChartAndText extends React.Component {
+export class LargeChartAndText extends React.Component {
   static propTypes = {
     chartType: PropTypes.oneOf(['pie', 'line', 'area', 'progress', 'bar'])
       .isRequired,
@@ -17,14 +18,12 @@ export class ChartAndText extends React.Component {
     chart: PropTypes.shape({
       data: PropTypes.any,
     }).isRequired,
-    chartPosition: PropTypes.oneOf(['left', 'right']).isRequired,
   }
 
   static defaultProps = {
     chartType: '',
     text: {},
     chart: {},
-    chartPosition: 'right',
   }
 
   renderChartContainer() {
@@ -35,31 +34,19 @@ export class ChartAndText extends React.Component {
   renderChartByType() {
     const { chartType, chart } = this.props
     const { data } = chart
-    if (chartType == 'pie') {
-      return <PieChart data={data} />
-    } else if (chartType == 'line') {
-      return <LineChart data={data} />
-    } else if (chartType == 'area') {
-      return <AreaChart data={data} />
-    } else if (chartType == 'progress') {
-      return <ProgressCircleChart data={data} />
-    } else if (chartType == 'bar') {
-      return <BarChart data={data} />
+    if (chartType == 'line') {
+      return <ChartWithAxis data={data} />
     }
   }
 
   render() {
-    const { chartType, chartPosition, text } = this.props
+    const { text } = this.props
     return (
       <View style={styles.cardFlex}>
-        {/* We could allow them to specify if the chart is left or right but I think it's going to make the UI ugly. */}
-        {/* {chartPosition == 'left' && this.renderChartByType()} */}
         <View style={styles.textContainer}>
           <CardText text={text} />
         </View>
-        <View style={styles.chartContainer}>
-          {chartPosition == 'right' && this.renderChartContainer()}
-        </View>
+        <View style={styles.chartContainer}>{this.renderChartContainer()}</View>
       </View>
     )
   }
@@ -67,13 +54,14 @@ export class ChartAndText extends React.Component {
 
 const styles = StyleSheet.create({
   cardFlex: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexGrow: 1,
     justifyContent: 'space-between',
     paddingRight: 8,
   },
   textContainer: {
     flexGrow: 1,
+    marginBottom: 8,
   },
   chartContainer: {
     flexGrow: 4,

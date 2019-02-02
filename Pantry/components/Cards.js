@@ -7,6 +7,7 @@ import hash from 'object-hash'
 
 import { CardText } from 'app/components/cards/CardText'
 import { ChartAndText } from 'app/components/cards/ChartAndText'
+import { LargeChartAndText } from 'app/components/cards/LargeChartAndText'
 import { IconAndText } from 'app/components/cards/IconAndText'
 
 @connect(
@@ -69,6 +70,14 @@ export class Cards extends React.Component {
       case 'bar-chart-with-text':
         return (
           <ChartAndText chartType='bar' text={card.text} chart={card.chart} />
+        )
+      case 'large-line-chart':
+        return (
+          <LargeChartAndText
+            chartType='line'
+            text={card.text}
+            chart={card.chart}
+          />
         )
       default:
         return null

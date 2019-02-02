@@ -1,5 +1,6 @@
 import React from 'react'
 import { PanResponder, Dimensions, View } from 'react-native'
+import PropTypes from 'prop-types'
 import { LineChart, Grid, XAxis, YAxis } from 'react-native-svg-charts'
 import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import * as shape from 'd3-shape'
@@ -8,7 +9,7 @@ const { Circle, G, Line, Rect, Text } = Svg
 
 import ClickableLineChart from 'app/components/charts/clickable/ClickableLineChart'
 
-const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
+// const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
 
 const verticleInset = 20
 const horizontalInset = 15
@@ -20,13 +21,32 @@ const contentInset = {
   right: horizontalInset,
 }
 
-class ChartWithAxis extends React.PureComponent {
+export class ChartWithAxis extends React.PureComponent {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }
+
+  static defaultProps = {
+    data: [],
+  }
+
   render() {
+    const { data } = this.props
     return (
-      <View style={{ height: 200 }}>
+      <View
+        style={
+          {
+            // height: 200,
+          }
+        }
+      >
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <YAxis
-            //   style={{ flex: 1 }}
+            style={{
+              // flex: 1,
+              height: 200,
+              marginRight: 8,
+            }}
             data={data}
             contentInset={{
               top: contentInset.top,
@@ -41,16 +61,21 @@ class ChartWithAxis extends React.PureComponent {
           />
           <View style={{ flex: 1, flexDirection: 'column' }}>
             {/* TODO: Render Line chart or other chart here... */}
-            <ClickableLineChart contentInset={contentInset} />
+            <ClickableLineChart contentInset={contentInset} data={data} />
             <XAxis
-              // style={{ marginHorizontal: -10 }}
+              style={
+                {
+                  // paddingBottom: 10
+                  // backgroundColor: 'red',
+                }
+              }
               data={data}
               formatLabel={(value, index) => index}
               contentInset={{
                 left: contentInset.left,
                 right: contentInset.right,
               }}
-              svg={{ fontSize: 10, fill: 'black' }}
+              svg={{ fontSize: 10, fill: 'grey' }}
             />
           </View>
         </View>
@@ -58,5 +83,3 @@ class ChartWithAxis extends React.PureComponent {
     )
   }
 }
-
-export default ChartWithAxis

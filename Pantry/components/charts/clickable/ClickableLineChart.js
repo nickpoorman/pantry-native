@@ -1,5 +1,6 @@
 import React from 'react'
 import { PanResponder, Dimensions, View } from 'react-native'
+import PropTypes from 'prop-types'
 import { LineChart, Grid, XAxis, YAxis } from 'react-native-svg-charts'
 import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import * as shape from 'd3-shape'
@@ -8,7 +9,7 @@ const { Circle, G, Line, Rect, Text } = Svg
 
 // const win = Dimensions.get('window')
 
-const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
+// const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
 
 function scale(number, oldMin, oldMax, newMin, newMax) {
   //   if (number < oldMin) {
@@ -37,6 +38,14 @@ function scale(number, oldMin, oldMax, newMin, newMax) {
 }
 
 class Clickable extends React.PureComponent {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }
+
+  static defaultProps = {
+    data: [],
+  }
+
   state = {
     selectedDataIndex: null,
     height: null,
@@ -61,7 +70,9 @@ class Clickable extends React.PureComponent {
     if (!!this.state.width) {
       var { contentInset } = this.props
       const clickLocX = evt.nativeEvent.locationX
-      if (clickLocX !== null) {
+      const numBuckets = this.props.data.length
+
+      if (clickLocX !== null && numBuckets) {
         const leftInset = (contentInset || {}).left || 0
         const rightInset = (contentInset || {}).right || 0
 
@@ -72,7 +83,6 @@ class Clickable extends React.PureComponent {
         const newWidth = this.state.width - leftInset - rightInset
         const adjustedPercent = adjustedClick / newWidth
         // Based on percent we can guess what bucket it falls into
-        const numBuckets = data.length
         const selectedBucket = Math.round(adjustedPercent * (numBuckets - 1))
 
         // console.log('\nS*********')
@@ -93,7 +103,7 @@ class Clickable extends React.PureComponent {
   }
 
   _handlePanResponderRelease = (evt, gestureState) => {
-    console.log('_handlePanResponderRelease')
+    // console.log('_handlePanResponderRelease')
     // The user has released all touches while this view is the
     // responder. This typically means a gesture has succeeded
     this.setState({ selectedDataIndex: null })
@@ -114,7 +124,8 @@ class Clickable extends React.PureComponent {
   //   }
 
   render() {
-    var { contentInset } = this.props
+    const { data, contentInset } = this.props
+    if (!data || !data.length) return <View />
 
     // console.log(
     //   `rendering - yValue: ${
@@ -217,7 +228,11 @@ class Clickable extends React.PureComponent {
 
     return (
       <View
-        style={{ height: 200 }}
+        style={
+          {
+            // height: 200
+          }
+        }
         // style={{ flex: 1, flexDirection: 'column' }}
         {...this._panResponder.panHandlers}
         onLayout={event => this._onLayout(event)}
@@ -226,8 +241,7 @@ class Clickable extends React.PureComponent {
           style={{
             height: 200,
             flex: 1,
-            // marginLeft: 5,
-            // marginRight: 5,
+            marginBottom: -8,
           }}
           data={data}
           svg={{
