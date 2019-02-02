@@ -97,6 +97,13 @@ class Clickable extends React.PureComponent {
           this.setState({
             selectedDataIndex: selectedBucket,
           })
+          if (typeof this.props.setSelectedText === 'function') {
+            const value = this.props.data[selectedBucket]
+            value &&
+              this.props.setSelectedText({
+                primary: value,
+              })
+          }
         }
       }
     }
@@ -107,6 +114,9 @@ class Clickable extends React.PureComponent {
     // The user has released all touches while this view is the
     // responder. This typically means a gesture has succeeded
     this.setState({ selectedDataIndex: null })
+    if (typeof this.props.setSelectedText === 'function') {
+      this.props.setSelectedText(null)
+    }
   }
 
   _onLayout(event) {

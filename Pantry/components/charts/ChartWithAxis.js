@@ -24,6 +24,7 @@ const contentInset = {
 export class ChartWithAxis extends React.PureComponent {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.number).isRequired,
+    setSelectedText: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -61,7 +62,11 @@ export class ChartWithAxis extends React.PureComponent {
           />
           <View style={{ flex: 1, flexDirection: 'column' }}>
             {/* TODO: Render Line chart or other chart here... */}
-            <ClickableLineChart contentInset={contentInset} data={data} />
+            <ClickableLineChart
+              contentInset={contentInset}
+              data={data}
+              setSelectedText={this.props.setSelectedText}
+            />
             <XAxis
               style={
                 {

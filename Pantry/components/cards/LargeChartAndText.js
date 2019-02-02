@@ -11,6 +11,10 @@ import { BarChart } from 'app/components/charts/BarChart'
 import { ChartWithAxis } from 'app/components/charts/ChartWithAxis'
 
 export class LargeChartAndText extends React.Component {
+  state = {
+    chartSelectedText: null,
+  }
+
   static propTypes = {
     chartType: PropTypes.oneOf(['pie', 'line', 'area', 'progress', 'bar'])
       .isRequired,
@@ -35,16 +39,29 @@ export class LargeChartAndText extends React.Component {
     const { chartType, chart } = this.props
     const { data } = chart
     if (chartType == 'line') {
-      return <ChartWithAxis data={data} />
+      return (
+        <ChartWithAxis
+          data={data}
+          setSelectedText={textObj => {
+            this.setState({ chartSelectedText: textObj })
+          }}
+        />
+      )
     }
   }
 
   render() {
     const { text } = this.props
+
     return (
       <View style={styles.cardFlex}>
         <View style={styles.textContainer}>
-          <CardText text={text} />
+          <View style={styles.textContainerGroup}>
+            <CardText text={text} />
+            {this.state.chartSelectedText && (
+              <CardText text={this.state.chartSelectedText} />
+            )}
+          </View>
         </View>
         <View style={styles.chartContainer}>{this.renderChartContainer()}</View>
       </View>
@@ -62,6 +79,11 @@ const styles = StyleSheet.create({
   textContainer: {
     flexGrow: 1,
     marginBottom: 8,
+  },
+  textContainerGroup: {
+    flexDirection: 'row',
+    flexGrow: 1,
+    justifyContent: 'space-between',
   },
   chartContainer: {
     flexGrow: 4,

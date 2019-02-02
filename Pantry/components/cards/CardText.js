@@ -33,7 +33,10 @@ export class CardText extends React.Component {
 
   render() {
     const { text } = this.props
-    var { primaryLarge, primary, secondary } = text
+    var { primaryLarge, primary, secondary } = {
+      ...CardText.defaultProps.text,
+      ...text,
+    }
     primaryLarge = primaryLarge.toString()
     primary = primary.toString()
     secondary = secondary.toString()
