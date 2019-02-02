@@ -8,6 +8,8 @@ const { Circle, G, Line, Rect, Text } = Svg
 
 import ClickableLineChart from 'app/components/charts/clickable/ClickableLineChart'
 
+const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
+
 const verticleInset = 20
 const horizontalInset = 15
 
@@ -20,16 +22,6 @@ const contentInset = {
 
 class ChartWithAxis extends React.PureComponent {
   render() {
-    const xAxis = (
-      <XAxis
-        //   style={{ marginHorizontal: -10 }}
-        data={data}
-        formatLabel={(value, index) => index}
-        contentInset={{ left: contentInset.left, right: contentInset.right }}
-        svg={{ fontSize: 10, fill: 'black' }}
-      />
-    )
-
     return (
       <View style={{ height: 200 }}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -51,7 +43,7 @@ class ChartWithAxis extends React.PureComponent {
             {/* TODO: Render Line chart or other chart here... */}
             <ClickableLineChart contentInset={contentInset} />
             <XAxis
-              //   style={{ marginHorizontal: -10 }}
+              // style={{ marginHorizontal: -10 }}
               data={data}
               formatLabel={(value, index) => index}
               contentInset={{
@@ -67,4 +59,4 @@ class ChartWithAxis extends React.PureComponent {
   }
 }
 
-export default Clickable
+export default ChartWithAxis

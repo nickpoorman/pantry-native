@@ -75,13 +75,13 @@ class Clickable extends React.PureComponent {
         const numBuckets = data.length
         const selectedBucket = Math.round(adjustedPercent * (numBuckets - 1))
 
-        console.log('\nS*********')
-        console.log(`adjustedClick: ${adjustedClick}`)
-        console.log(`newWidth: ${newWidth}`)
-        console.log(`adjustedPercent: ${adjustedPercent}`)
-        console.log(`numBuckets: ${numBuckets}`)
-        console.log(`selectedBucket: ${selectedBucket}`)
-        console.log('E*********\n')
+        // console.log('\nS*********')
+        // console.log(`adjustedClick: ${adjustedClick}`)
+        // console.log(`newWidth: ${newWidth}`)
+        // console.log(`adjustedPercent: ${adjustedPercent}`)
+        // console.log(`numBuckets: ${numBuckets}`)
+        // console.log(`selectedBucket: ${selectedBucket}`)
+        // console.log('E*********\n')
 
         if (this.state.selectedDataIndex !== selectedBucket) {
           this.setState({
@@ -116,11 +116,11 @@ class Clickable extends React.PureComponent {
   render() {
     var { contentInset } = this.props
 
-    console.log(
-      `rendering - yValue: ${
-        data[this.state.selectedDataIndex]
-      } | selected-index: ${this.state.selectedDataIndex}`
-    )
+    // console.log(
+    //   `rendering - yValue: ${
+    //     data[this.state.selectedDataIndex]
+    //   } | selected-index: ${this.state.selectedDataIndex}`
+    // )
 
     /**
      * Both below functions should preferably be their own React Components
@@ -181,8 +181,8 @@ class Clickable extends React.PureComponent {
             key={'zero-axis'}
             x1={x(selectedX)}
             x2={x(selectedX)}
-            y1={'0%'}
-            y2={'100%'}
+            y1={'3%'}
+            y2={'93%'}
             stroke={'grey'}
             stroke={'url(#gradient)'}
             // strokeDasharray={[4, 8]}

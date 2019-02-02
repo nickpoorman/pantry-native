@@ -42,6 +42,8 @@ export class ChartAndText extends React.Component {
       return <ProgressCircleChart data={data} />
     } else if (chartType == 'bar') {
       return <BarChart data={data} />
+    } else if (chartType == 'line-large') {
+      return <LineChart data={data} />
     }
   }
 
