@@ -1,6 +1,7 @@
 import React from 'react'
 import { PanResponder, Dimensions, View } from 'react-native'
 import { LineChart, Grid } from 'react-native-svg-charts'
+import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import * as shape from 'd3-shape'
 import { Svg } from 'expo'
 const { Circle, G, Line, Rect, Text } = Svg
@@ -19,6 +20,10 @@ class Clickable extends React.PureComponent {
   constructor(props) {
     super(props)
     this._panResponder = PanResponder.create({
+      // Start on click instead of move...?
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onPanResponderStart: this._handlePanResponderMove,
+
       // Ask to be the responder:
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
       onPanResponderMove: this._handlePanResponderMove,
@@ -78,17 +83,52 @@ class Clickable extends React.PureComponent {
       />
     )
 
+    const Gradient = () => (
+      <Defs key={'gradient'}>
+        <LinearGradient id={'gradient'} x1={'0'} y={'0%'} x2={'100%'} y2={'0%'}>
+          <Stop offset={'0%'} stopColor={'rgb(134, 65, 244)'} />
+          <Stop offset={'100%'} stopColor={'rgb(66, 194, 244)'} />
+        </LinearGradient>
+      </Defs>
+    )
+
     const VerticleLine = ({ x, y, selectedX }) => (
-      <Line
-        key={'zero-axis'}
-        x1={x(selectedX)}
-        x2={x(selectedX)}
-        y1={'0%'}
-        y2={'100%'}
-        stroke={'grey'}
-        // strokeDasharray={[4, 8]}
-        strokeWidth={2}
-      />
+      <G>
+        <Defs key={'gradient'}>
+          <LinearGradient
+            id={'gradient'}
+            x1={x(selectedX)}
+            y={'0%'}
+            x2={x(selectedX)}
+            y2={'100%'}
+          >
+            <Stop
+              offset={'0%'}
+              stopColor={'rgb(134, 65, 244)'}
+              stopOpacity='0'
+            />
+            <Stop
+              offset={'100%'}
+              stopColor={'rgb(134, 65, 244)'}
+              stopOpacity='1'
+            />
+          </LinearGradient>
+        </Defs>
+        <Line
+          key={'zero-axis'}
+          x1={x(selectedX)}
+          x2={x(selectedX)}
+          y1={'0%'}
+          y2={'100%'}
+          stroke={'grey'}
+          stroke={'url(#gradient)'}
+          // strokeDasharray={[4, 8]}
+          fill='url(#gradient)'
+          strokeWidth={7}
+        >
+          {/* <Gradient /> */}
+        </Line>
+      </G>
     )
 
     const Decorator = ({ x, y, data }) => {
