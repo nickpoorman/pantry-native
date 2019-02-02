@@ -211,7 +211,7 @@ class Clickable extends React.PureComponent {
             key={'zero-axis'}
             x1={x(selectedX)}
             x2={x(selectedX)}
-            y1={'3%'}
+            y1={'8%'}
             y2={'93%'}
             stroke={'grey'}
             stroke={'url(#gradient)'}
