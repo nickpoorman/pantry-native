@@ -49,6 +49,7 @@ export class Cards extends React.Component {
   }
 
   buildComponentFromCard = card => {
+    console.log(`trying to render card: ${JSON.stringify(card)}`)
     switch (card.cardType) {
       case 'text':
         return <CardText text={card.text} />
@@ -87,6 +88,7 @@ export class Cards extends React.Component {
           />
         )
       default:
+        console.log(`Unknown card type: ${JSON.stringify(card.cardType)}`)
         return null
     }
   }
@@ -118,6 +120,8 @@ export class Cards extends React.Component {
       return <Text>TODO: Create an error state when cards is not there</Text>
     }
 
+    console.log(`cards is: ${JSON.stringify(cards)}`)
+
     // const components = cards.map((card, index) => {
     //   const key = hash(card)
     //   const component = this.buildComponentFromCard(card)
@@ -131,13 +135,20 @@ export class Cards extends React.Component {
     return (
       <FlatList
         data={cards}
-        renderItem={card => (
-          <View style={styles.card}>{this.buildComponentFromCard(card)}</View>
-        )}
+        extraData={{ ...this.state, ...this.props }}
+        renderItem={({ item, index }) => {
+          const isLast = index == cards.length - 1
+          const lastStyles = isLast ? { marginBottom: 10 } : {}
+          return (
+            <View style={{ ...styles.card, ...lastStyles }}>
+              {this.buildComponentFromCard(item)}
+            </View>
+          )
+        }}
         keyExtractor={(card, index) => `${hash(card)}-${index}`}
         onRefresh={this.onRefresh}
         refreshing={currentTargetDataRefreshing}
-        // style={styles.scrollContainer}
+        style={styles.scrollContainer}
         // contentContainerStyle={styles.scrollContentContainer}
       />
       //   {/* {components} */}
