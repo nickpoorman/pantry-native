@@ -1,7 +1,6 @@
 import React from 'react'
 import { FlatList, StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import get from 'lodash.get'
 import { PropTypes } from 'prop-types'
 import hash from 'object-hash'
 
@@ -23,10 +22,6 @@ import { loadTargetData } from 'app/store/actions'
   { loadTargetData }
 )
 export class Cards extends React.Component {
-  // static navigationOptions = {
-  //   header: null,
-  // }
-
   static propTypes = {
     ui: PropTypes.shape({
       toast: PropTypes.shape({
@@ -49,7 +44,6 @@ export class Cards extends React.Component {
   }
 
   buildComponentFromCard = card => {
-    console.log(`trying to render card: ${JSON.stringify(card)}`)
     switch (card.cardType) {
       case 'text':
         return <CardText text={card.text} />
@@ -95,8 +89,17 @@ export class Cards extends React.Component {
 
   onRefresh = () => {
     if (this.props.currentTarget) {
-      console.log('Refreshing...')
-      this.props.loadTargetData(this.props.currentTarget, { refreshing: true })
+      this.props
+        .loadTargetData(this.props.currentTarget, { refreshing: true })
+        .catch(err => {
+          // TODO: Do this toast stuff...
+          // const message = err.message ? err.message : err
+          // this.props.actions.toggleSpinner()
+          // this.props.actions.showToast({
+          //   alert: message,
+          // })
+          console.log(`err: ${JSON.stringify(err)}`)
+        })
     }
   }
 
@@ -120,18 +123,6 @@ export class Cards extends React.Component {
       return <Text>TODO: Create an error state when cards is not there</Text>
     }
 
-    console.log(`cards is: ${JSON.stringify(cards)}`)
-
-    // const components = cards.map((card, index) => {
-    //   const key = hash(card)
-    //   const component = this.buildComponentFromCard(card)
-    //   return (
-    //     <View key={`${key}-${index}`} style={styles.card}>
-    //       {component}
-    //     </View>
-    //   )
-    // })
-
     return (
       <FlatList
         data={cards}
@@ -149,41 +140,7 @@ export class Cards extends React.Component {
         onRefresh={this.onRefresh}
         refreshing={currentTargetDataRefreshing}
         style={styles.scrollContainer}
-        // contentContainerStyle={styles.scrollContentContainer}
       />
-      //   {/* {components} */}
-      //   {/* <View style={styles.card}>
-      //     <CardText />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <ChartAndText />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <IconAndText iconPosition='left' />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <IconAndText iconPosition='right' />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <ChartAndText chartType='area' />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <ChartAndText chartType='line' />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <ChartAndText chartType='progress' />
-      //   </View>
-
-      //   <View style={styles.card}>
-      //     <ChartAndText chartType='bar' />
-      //   </View> */}
-      // {/* </FlatList> */}
     )
   }
 }
@@ -192,9 +149,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     backgroundColor: '#f0f0f0',
-  },
-  scrollContentContainer: {
-    // paddingTop: 30,
   },
   card: {
     marginTop: 10,

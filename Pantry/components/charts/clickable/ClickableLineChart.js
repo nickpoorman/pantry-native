@@ -11,31 +11,9 @@ const { Circle, G, Line, Rect, Text } = Svg
 
 // const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, 0, -80]
 
-function scale(number, oldMin, oldMax, newMin, newMax) {
-  //   if (number < oldMin) {
-  //     console.log(
-  //       'ERROR OOB - scale(%d, %d, %d, %d, %d)',
-  //       number,
-  //       oldMin,
-  //       oldMax,
-  //       newMin,
-  //       newMax
-  //     )
-  //     throw new Error('number is less than oldMin')
-  //   }
-  //   if (number > oldMax) {
-  //     console.log(
-  //       'ERROR OOB - scale(%d, %d, %d, %d, %d)',
-  //       number,
-  //       oldMin,
-  //       oldMax,
-  //       newMin,
-  //       newMax
-  //     )
-  //     throw new Error('number is greater than oldMax')
-  //   }
-  return ((newMax - newMin) * (number - oldMin)) / (oldMax - oldMin) + newMin
-}
+// function scale(number, oldMin, oldMax, newMin, newMax) {
+//   return ((newMax - newMin) * (number - oldMin)) / (oldMax - oldMin) + newMin
+// }
 
 class Clickable extends React.PureComponent {
   static propTypes = {

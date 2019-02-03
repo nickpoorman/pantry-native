@@ -98,11 +98,6 @@ export function loadTargetData(target, options = { refreshing: false }) {
       const t = getTarget(target, getState)
       if (t) target = t
     }
-    console.log(
-      `loadTargetData: ${JSON.stringify(target)} - options: ${JSON.stringify(
-        options
-      )}`
-    )
 
     return dispatch({
       type: types.LOAD_TARGET_DATA,
@@ -110,13 +105,6 @@ export function loadTargetData(target, options = { refreshing: false }) {
         refreshing: options.refreshing,
       },
       payload: fetchTarget(target).then(data => ({ currentTargetData: data })),
-    }).catch(err => {
-      // const message = err.message ? err.message : err
-      // this.props.actions.toggleSpinner()
-      // this.props.actions.showToast({
-      //   alert: message,
-      // })
-      console.log(`err: ${JSON.stringify(err)}`)
     })
   }
 }
