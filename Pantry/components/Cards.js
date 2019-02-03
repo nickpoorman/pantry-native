@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text } from 'react-native'
+import { FlatList, StyleSheet, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import get from 'lodash.get'
 import { PropTypes } from 'prop-types'
@@ -10,13 +10,17 @@ import { ChartAndText } from 'app/components/cards/ChartAndText'
 import { LargeChartAndText } from 'app/components/cards/LargeChartAndText'
 import { IconAndText } from 'app/components/cards/IconAndText'
 
+import { loadTargetData } from 'app/store/actions'
+
 @connect(
   state => ({
     ui: state.ui,
     currentTarget: state.targets.currentTarget,
     currentTargetData: state.targets.currentTargetData,
+    currentTargetDataLoading: state.targets.targetsLoading,
+    currentTargetDataRefreshing: state.targets.targetsRefreshing,
   }),
-  {}
+  { loadTargetData }
 )
 export class Cards extends React.Component {
   // static navigationOptions = {
@@ -34,6 +38,9 @@ export class Cards extends React.Component {
     currentTargetData: PropTypes.shape({
       cards: PropTypes.arrayOf(PropTypes.object),
     }),
+    currentTargetDataLoading: PropTypes.bool,
+    currentTargetDataRefreshing: PropTypes.bool,
+    loadTargetData: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -84,8 +91,24 @@ export class Cards extends React.Component {
     }
   }
 
+  onRefresh = () => {
+    if (this.props.currentTarget) {
+      console.log('Refreshing...')
+      this.props.loadTargetData(this.props.currentTarget, { refreshing: true })
+    }
+  }
+
   render() {
-    const { currentTargetData } = this.props
+    const {
+      currentTargetData,
+      currentTargetDataLoading,
+      currentTargetDataRefreshing,
+    } = this.props
+
+    if (currentTargetDataLoading) {
+      return <ActivityIndicator style={{ marginTop: 20 }} size='large' />
+    }
+
     if (!currentTargetData) {
       return <Text>TODO: Create empty state for cards</Text>
     }
@@ -95,54 +118,61 @@ export class Cards extends React.Component {
       return <Text>TODO: Create an error state when cards is not there</Text>
     }
 
-    const components = cards.map((card, index) => {
-      const key = hash(card)
-      const component = this.buildComponentFromCard(card)
-      return (
-        <View key={`${key}-${index}`} style={styles.card}>
-          {component}
-        </View>
-      )
-    })
+    // const components = cards.map((card, index) => {
+    //   const key = hash(card)
+    //   const component = this.buildComponentFromCard(card)
+    //   return (
+    //     <View key={`${key}-${index}`} style={styles.card}>
+    //       {component}
+    //     </View>
+    //   )
+    // })
 
     return (
-      <ScrollView
-        style={styles.scrollContainer}
-        contentContainerStyle={styles.scrollContentContainer}
-      >
-        {components}
-        {/* <View style={styles.card}>
-          <CardText />
-        </View>
+      <FlatList
+        data={cards}
+        renderItem={card => (
+          <View style={styles.card}>{this.buildComponentFromCard(card)}</View>
+        )}
+        keyExtractor={(card, index) => `${hash(card)}-${index}`}
+        onRefresh={this.onRefresh}
+        refreshing={currentTargetDataRefreshing}
+        // style={styles.scrollContainer}
+        // contentContainerStyle={styles.scrollContentContainer}
+      />
+      //   {/* {components} */}
+      //   {/* <View style={styles.card}>
+      //     <CardText />
+      //   </View>
 
-        <View style={styles.card}>
-          <ChartAndText />
-        </View>
+      //   <View style={styles.card}>
+      //     <ChartAndText />
+      //   </View>
 
-        <View style={styles.card}>
-          <IconAndText iconPosition='left' />
-        </View>
+      //   <View style={styles.card}>
+      //     <IconAndText iconPosition='left' />
+      //   </View>
 
-        <View style={styles.card}>
-          <IconAndText iconPosition='right' />
-        </View>
+      //   <View style={styles.card}>
+      //     <IconAndText iconPosition='right' />
+      //   </View>
 
-        <View style={styles.card}>
-          <ChartAndText chartType='area' />
-        </View>
+      //   <View style={styles.card}>
+      //     <ChartAndText chartType='area' />
+      //   </View>
 
-        <View style={styles.card}>
-          <ChartAndText chartType='line' />
-        </View>
+      //   <View style={styles.card}>
+      //     <ChartAndText chartType='line' />
+      //   </View>
 
-        <View style={styles.card}>
-          <ChartAndText chartType='progress' />
-        </View>
+      //   <View style={styles.card}>
+      //     <ChartAndText chartType='progress' />
+      //   </View>
 
-        <View style={styles.card}>
-          <ChartAndText chartType='bar' />
-        </View> */}
-      </ScrollView>
+      //   <View style={styles.card}>
+      //     <ChartAndText chartType='bar' />
+      //   </View> */}
+      // {/* </FlatList> */}
     )
   }
 }

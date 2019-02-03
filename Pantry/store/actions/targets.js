@@ -70,21 +70,53 @@ export function setCurrentTarget(id) {
         currentTarget: id,
       })),
     }).then(() => {
-      const { targets } = getState()
-      const { entities } = targets
-      if (entities && entities.targets) {
-        const currentTarget = entities.targets[id]
-        if (currentTarget) {
-          return dispatch(loadTargetData(currentTarget))
-        }
-      }
+      // const { targets } = getState()
+      // const { entities } = targets
+      // if (entities && entities.targets) {
+      //   const currentTarget = entities.targets[id]
+      //   if (currentTarget) {
+      //     return dispatch(loadTargetData(currentTarget))
+      //   }
+      // }
+
+      const target = getTarget(id, getState)
+      if (target) return dispatch(loadTargetData(currentTarget))
     })
 }
 
-export function loadTargetData(target) {
-  return (dispatch, getState) =>
-    dispatch({
+function getTarget(id, getState) {
+  const { targets } = getState()
+  const { entities } = targets
+  if (entities && entities.targets) {
+    return entities.targets[id]
+  }
+}
+
+export function loadTargetData(target, options = { refreshing: false }) {
+  return (dispatch, getState) => {
+    if (typeof target === 'string') {
+      const t = getTarget(target, getState)
+      if (t) target = t
+    }
+    console.log(
+      `loadTargetData: ${JSON.stringify(target)} - options: ${JSON.stringify(
+        options
+      )}`
+    )
+
+    return dispatch({
       type: types.LOAD_TARGET_DATA,
+      meta: {
+        refreshing: options.refreshing,
+      },
       payload: fetchTarget(target).then(data => ({ currentTargetData: data })),
+    }).catch(err => {
+      // const message = err.message ? err.message : err
+      // this.props.actions.toggleSpinner()
+      // this.props.actions.showToast({
+      //   alert: message,
+      // })
+      console.log(`err: ${JSON.stringify(err)}`)
     })
+  }
 }

@@ -16,6 +16,9 @@ export async function axios(options) {
 
 export async function fetchTarget(target) {
   var { url } = target
+  if (!url) {
+    console.warn(`Trying to fetch an empty URL: ${JSON.stringify(url)}`)
+  }
   const parsed = urlParse(url)
   const proto = parsed.protocol
   if (!proto) {

@@ -13,8 +13,11 @@ const initialState = {
     targets: {},
   },
 
+  // This is the ID of the current target
   currentTarget: '',
   currentTargetData: { cards: [] },
+  currentTargetDataLoading: false,
+  currentTargetDataRefreshing: false,
 }
 
 function loadKey(action, prefix) {
@@ -84,17 +87,20 @@ export default function targets(state = initialState, action) {
       }
 
     // Don't need these right now. Should probably turn on spinner though.
-    // case `${types.LOAD_TARGET_DATA}_PENDING`:
-    //   return {
-    //     ...state,
-    //   }
-    // case `${types.LOAD_TARGET_DATA}_REJECTED`:
-    //   return {
-    //     ...state,
-    //   }
+    case `${types.LOAD_TARGET_DATA}_PENDING`:
+      return {
+        ...state,
+        [loadKey(action, 'currentTargetData')]: true,
+      }
+    case `${types.LOAD_TARGET_DATA}_REJECTED`:
+      return {
+        ...state,
+        [loadKey(action, 'currentTargetData')]: false,
+      }
     case `${types.LOAD_TARGET_DATA}_FULFILLED`:
       return {
         ...state,
+        [loadKey(action, 'currentTargetData')]: false,
         currentTargetData: action.payload.currentTargetData,
       }
 
