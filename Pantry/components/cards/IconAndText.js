@@ -8,15 +8,17 @@ export class IconAndText extends React.Component {
   static propTypes = {
     text: PropTypes.shape({}),
     icon: PropTypes.shape({}),
+    link: PropTypes.shape({}),
   }
 
   static defaultProps = {
     text: {},
     icon: {},
+    link: {},
   }
 
   render() {
-    const { icon, text } = this.props
+    const { icon, text, link } = this.props
     const { position } = icon
     var validIconPosition = position == 'right' || position == 'left'
     const iconRight = position == 'right'
@@ -27,6 +29,7 @@ export class IconAndText extends React.Component {
           source={icon.source}
           name={icon.name}
           nameIOS={icon.nameIOS}
+          link={link}
         />
       </View>
     )

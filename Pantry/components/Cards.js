@@ -48,7 +48,9 @@ export class Cards extends React.Component {
       case 'text':
         return <CardText text={card.text} />
       case 'icon-with-text':
-        return <IconAndText text={card.text} icon={card.icon} />
+        return (
+          <IconAndText text={card.text} icon={card.icon} link={card.link} />
+        )
       case 'pie-chart-with-text':
         return (
           <ChartAndText chartType='pie' text={card.text} chart={card.chart} />

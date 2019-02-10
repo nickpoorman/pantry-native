@@ -80,7 +80,7 @@ export function setCurrentTarget(id) {
       // }
 
       const target = getTarget(id, getState)
-      if (target) return dispatch(loadTargetData(currentTarget))
+      if (target) return dispatch(loadTargetData(target))
     })
 }
 

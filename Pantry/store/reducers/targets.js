@@ -86,7 +86,6 @@ export default function targets(state = initialState, action) {
         currentTarget: action.payload.currentTarget,
       }
 
-    // Don't need these right now. Should probably turn on spinner though.
     case `${types.LOAD_TARGET_DATA}_PENDING`:
       return {
         ...state,

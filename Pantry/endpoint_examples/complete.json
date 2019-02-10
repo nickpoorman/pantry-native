@@ -31,6 +31,9 @@
         "source": "Ionicons",
         "name": "md-link",
         "nameIOS": "ios-link"
+      },
+      "link": {
+        "url": "https://google.com"
       }
     },
     {
