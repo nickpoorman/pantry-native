@@ -48,10 +48,12 @@ function _loadCurrentTargetData(context) {
   }
 
   const target = targets.entities.targets[currentTarget]
-  return fetchTarget(target).then(data => ({
-    ...context,
-    currentTargetData: data,
-  }))
+  return fetchTarget(target).then(data => {
+    return {
+      ...context,
+      currentTargetData: data,
+    }
+  })
 }
 
 export function load() {

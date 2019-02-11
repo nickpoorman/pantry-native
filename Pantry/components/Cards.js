@@ -100,7 +100,7 @@ export class Cards extends React.Component {
           // this.props.actions.showToast({
           //   alert: message,
           // })
-          console.log(`err: ${JSON.stringify(err)}`)
+          console.log(`TODO: Handle refresh err: ${JSON.stringify(err)}`)
         })
     }
   }

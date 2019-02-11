@@ -97,10 +97,11 @@ export default function targets(state = initialState, action) {
         [loadKey(action, 'currentTargetData')]: false,
       }
     case `${types.LOAD_TARGET_DATA}_FULFILLED`:
+      const { currentTargetData } = action.payload
       return {
         ...state,
         [loadKey(action, 'currentTargetData')]: false,
-        currentTargetData: action.payload.currentTargetData,
+        currentTargetData,
       }
 
     case 'SETUP_COMPLETE':

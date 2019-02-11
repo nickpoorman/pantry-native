@@ -97,6 +97,8 @@ export default class AppLoader extends React.Component {
     const loggedOut = !booting && !user
     const loggedIn = !booting && user
 
+    const localMode = true
+
     if (loggedIn) {
       return (
         <View style={styles.container}>
@@ -121,7 +123,8 @@ export default class AppLoader extends React.Component {
           />
 
           {ui.toast.enabled && <MetriksToast />}
-          {ui.connectionStatus === 'none' && <NoConnection />}
+
+          {!localMode && ui.connectionStatus === 'none' && <NoConnection />}
         </View>
       )
     }
